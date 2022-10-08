@@ -12,9 +12,9 @@ export const GlobalStyles = createGlobalStyle`
     height: 100%;
     margin: 0;
     padding: 0;
-    color: #ffffff;
-    background-color: #000000;
-    font-family: 'Roboto', 'Open Sans', sans-serif;
+    color: #000000;
+    background-color: #ffffff;
+    font-family: 'League Spartan', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }

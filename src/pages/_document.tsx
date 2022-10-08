@@ -40,7 +40,12 @@ export default class MyDocument extends Document {
         <Head>
           <meta charSet="utf-8" />
           <meta name="Project Name" content="Whatever you want" />
-          {/* Fonts would go here! */}
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&display=swap"
+            rel="stylesheet"
+          />
         </Head>
         <body>
           <Main />
