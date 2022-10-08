@@ -52,15 +52,7 @@ const customViewports = {
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
-  viewport: {
-    defaultViewport: 'mobileMedium',
-    viewports: customViewports,
-  },
   layout: 'fullscreen',
-  backgrounds: {
-    default: 'Black',
-    values: [{ name: 'Black', value: '#000000' }],
-  },
   controls: {
     matchers: {
       color: /(background|color)$/i,
