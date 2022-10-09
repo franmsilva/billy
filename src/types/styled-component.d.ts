@@ -15,6 +15,7 @@ declare module 'styled-components' {
       mirage: '#1E2139';
       mirageLight: '#252945';
       mirageDark: '#141625';
+      slateGray: '#373b53';
     };
     borderRadius: {
       5: '5px';

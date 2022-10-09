@@ -4,7 +4,7 @@ import React from 'react';
 import NavigationBar from './NavigationBar';
 
 export default {
-  title: 'NavigationBar',
+  title: 'Molecules/NavigationBar',
   component: NavigationBar,
 } as ComponentMeta<typeof NavigationBar>;
 
