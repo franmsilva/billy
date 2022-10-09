@@ -27,14 +27,19 @@ export const GlobalStyles = createGlobalStyle`
     overflow: auto;
   }
 
-  button {
-    background: none;
-    color: inherit;
-    border: none;
+  input,
+  button,
+  textarea,
+  select {
+    border: 1px solid black;
+    outline: none;
+    appearance: none;
+  }
+
+  fieldset {
+    margin: 0;
     padding: 0;
-    font: inherit;
-    cursor: pointer;
-    outline: inherit;
+    border: none;
   }
 
   a, a:hover, a:focus, a:active  {
