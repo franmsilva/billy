@@ -18,7 +18,7 @@ declare module 'styled-components' {
       slateGray: '#373b53';
     };
     borderRadius: {
-      5: '5px';
+      4: '4px';
       20: '20px';
     };
     fontSize: {
