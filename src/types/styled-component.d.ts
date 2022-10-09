@@ -2,40 +2,34 @@ import 'styled-components';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
-    fontFamily: {
-      header: "'Raleway', 'Open Sans', sans-serif";
-      body: "'Roboto', 'Open Sans', sans-serif";
-    };
     colors: {
-      black: '#000000';
-      white: '#ffffff';
-      'gray-darkest': '#2b2b2b';
-      'gray-dark': '#6b6b6b';
-      gray: '#b8b8b8';
-      'gray-light': '#f0f0f0';
-      'gray-lightest': '#f3f4f5';
-      purple: '#9e9eff';
-      yellow: '#e1ff57';
+      cornflowerBlue: '#7C5DFA';
+      cornflowerBlueLight: '#9277FF';
+      sienna: '#EC5757';
+      siennaLight: '#ff9797';
+      selago: '#DFE3FA';
+      baliHai: '#888EB0';
+      shipCove: '#7E88C3';
+      whisper: '#F8F8FB';
+      vulcan: '#0C0E16';
+      mirage: '#1E2139';
+      mirageLight: '#252945';
+      mirageDark: '#141625';
     };
     borderRadius: {
       5: '5px';
+      20: '20px';
     };
     fontSize: {
-      xs: FlattenSimpleInterpolation;
       sm: FlattenSimpleInterpolation;
       base: FlattenSimpleInterpolation;
       lg: FlattenSimpleInterpolation;
       xl: FlattenSimpleInterpolation;
       '2xl': FlattenSimpleInterpolation;
-      '3xl': FlattenSimpleInterpolation;
-      '4xl': FlattenSimpleInterpolation;
     };
     fontWeight: {
       bold: 700;
-      semibold: 500;
-      regular: 400;
-      light: 300;
-      thin: 100;
+      medium: 500;
     };
     screens: {
       sm: '425px';

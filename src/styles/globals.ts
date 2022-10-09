@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
+import { BASE_FONT_SIZE } from './theme';
+
 export const GlobalStyles = createGlobalStyle`
   *,
   :after,
@@ -12,8 +14,9 @@ export const GlobalStyles = createGlobalStyle`
     height: 100%;
     margin: 0;
     padding: 0;
-    color: #000000;
-    background-color: #ffffff;
+    color: ${({ theme }) => theme.colors.vulcan};
+    background-color: ${({ theme }) => theme.colors.whisper};;
+    font-size: ${BASE_FONT_SIZE};
     font-family: 'League Spartan', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

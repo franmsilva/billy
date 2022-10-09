@@ -1,64 +1,51 @@
 import { css, DefaultTheme } from 'styled-components';
 
+export const BASE_FONT_SIZE = 12;
+
 export const Theme: DefaultTheme = {
-  fontFamily: {
-    header: "'Raleway', 'Open Sans', sans-serif",
-    body: "'Roboto', 'Open Sans', sans-serif",
-  },
   colors: {
-    black: '#000000',
-    white: '#ffffff',
-    'gray-darkest': '#2b2b2b',
-    'gray-dark': '#6b6b6b',
-    gray: '#b8b8b8',
-    'gray-light': '#f0f0f0',
-    'gray-lightest': '#f3f4f5',
-    purple: '#9e9eff',
-    yellow: '#e1ff57',
+    cornflowerBlue: '#7C5DFA',
+    cornflowerBlueLight: '#9277FF',
+    sienna: '#EC5757',
+    siennaLight: '#ff9797',
+    selago: '#DFE3FA',
+    baliHai: '#888EB0',
+    shipCove: '#7E88C3',
+    whisper: '#F8F8FB',
+    vulcan: '#0C0E16',
+    mirage: '#1E2139',
+    mirageLight: '#252945',
+    mirageDark: '#141625',
   },
   borderRadius: {
     5: '5px',
+    20: '20px',
   },
   fontSize: {
-    xs: css`
-      font-size: 0.75rem;
-      line-height: 1rem;
-    `,
     sm: css`
-      font-size: 0.875rem;
-      line-height: 1.25rem;
+      font-size: ${11 / BASE_FONT_SIZE}rem;
+      line-height: ${18 / BASE_FONT_SIZE}rem;
     `,
     base: css`
       font-size: 1rem;
-      line-height: 1.5rem;
+      line-height: 1.25rem;
     `,
     lg: css`
-      font-size: 1.125rem;
-      line-height: 1.75rem;
+      font-size: ${16 / BASE_FONT_SIZE}rem;
+      line-height: ${24 / BASE_FONT_SIZE}rem;
     `,
     xl: css`
-      font-size: 1.25rem;
-      line-height: 1.75rem;
+      font-size: ${20 / BASE_FONT_SIZE}rem;
+      line-height: ${22 / BASE_FONT_SIZE}rem;
     `,
     '2xl': css`
-      font-size: 1.5rem;
-      line-height: 2rem;
-    `,
-    '3xl': css`
-      font-size: 1.875rem;
-      line-height: 2.25rem;
-    `,
-    '4xl': css`
-      font-size: 2.25rem;
-      line-height: 2.5rem;
+      font-size: ${32 / BASE_FONT_SIZE}rem;
+      line-height: ${36 / BASE_FONT_SIZE}rem;
     `,
   },
   fontWeight: {
     bold: 700,
-    semibold: 500,
-    regular: 400,
-    light: 300,
-    thin: 100,
+    medium: 500,
   },
   screens: {
     sm: '425px',
