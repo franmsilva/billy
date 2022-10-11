@@ -7,8 +7,9 @@ export const Theme: DefaultTheme = {
     cornflowerBlue: '#7C5DFA',
     cornflowerBlueLight: '#9277FF',
     sienna: '#EC5757',
-    siennaLight: '#ff9797',
+    siennaLight: '#FF9797',
     selago: '#DFE3FA',
+    selagoLight: '#F9FAFE',
     baliHai: '#888EB0',
     shipCove: '#7E88C3',
     whisper: '#F8F8FB',
@@ -21,6 +22,7 @@ export const Theme: DefaultTheme = {
   borderRadius: {
     4: '4px',
     20: '20px',
+    24: '24px',
   },
   fontSize: {
     sm: css`
