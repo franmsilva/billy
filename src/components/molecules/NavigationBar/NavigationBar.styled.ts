@@ -4,6 +4,9 @@ import styled, { css } from 'styled-components';
 export const Header = styled.header`
   height: 100vh;
   width: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
   background-color: ${({ theme }) => theme.colors.slateGray};
   border-top-right-radius: ${({ theme }) => theme.borderRadius[20]};
   border-bottom-right-radius: ${({ theme }) => theme.borderRadius[20]};
