@@ -1,25 +1,6 @@
 import { ChangeEvent, createContext, FC, ReactNode, useContext, useState } from 'react';
 
-import { IInvoiceItem } from '@src/types/invoice';
-
-interface IInvoiceFormData {
-  client: {
-    name: string;
-    email: string;
-    address: {
-      street: string;
-      city: string;
-      postcode: string;
-      country: string;
-    };
-  };
-  terms: {
-    invoiceDate: string;
-    paymentDate: string;
-    projectDescription: string;
-  };
-  invoiceItems: IInvoiceItem[];
-}
+import { IInvoiceFormData } from '@src/types/invoice';
 
 interface IInvoiceFormContext extends IInvoiceFormData {
   handleClientFieldChange(e: ChangeEvent<HTMLInputElement>): void;
