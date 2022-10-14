@@ -14,7 +14,8 @@ export enum EButtonTheme {
 
 interface ButtonProps extends IStyledComponent {
   icon?: string;
-  theme?: EButtonTheme;
+  // Prefixed to avoid clash with styled-components theme prop
+  $theme?: EButtonTheme;
   fullWidth?: boolean;
   onClick: MouseEventHandler;
   children: ReactNode;
@@ -22,16 +23,16 @@ interface ButtonProps extends IStyledComponent {
 
 const Button: FC<ButtonProps> = ({
   icon,
-  theme = EButtonTheme.Primary,
+  $theme = EButtonTheme.Primary,
   fullWidth,
   onClick,
   children,
 }) => {
-  const shouldRenderIcon = icon && theme === EButtonTheme.Primary;
+  const shouldRenderIcon = icon && $theme === EButtonTheme.Primary;
 
   return (
     <S.Button
-      $btnTheme={theme}
+      $btnTheme={$theme}
       $fullWidth={fullWidth}
       $hasIcon={shouldRenderIcon}
       onClick={onClick}

@@ -114,20 +114,20 @@ const CreateInvoiceForm: FC = () => {
             Item List
           </S.Subheading>
           <InvoiceItemsTable />
-          <Button theme={EButtonTheme.Tertiary} onClick={handleInvoiceItemAdd} fullWidth>
+          <Button $theme={EButtonTheme.Tertiary} onClick={handleInvoiceItemAdd} fullWidth>
             + Add New Item
           </Button>
         </S.FieldSet>
       </S.ScrollableContent>
       <S.Footer>
-        <Button theme={EButtonTheme.Tertiary} onClick={placeholderHandler}>
+        <Button $theme={EButtonTheme.Tertiary} onClick={placeholderHandler}>
           Discard
         </Button>
         <S.PrimaryActionsGroup>
-          <Button theme={EButtonTheme.Secondary} onClick={placeholderHandler}>
+          <Button $theme={EButtonTheme.Secondary} onClick={placeholderHandler}>
             Save as Draft
           </Button>
-          <Button theme={EButtonTheme.Primary} onClick={placeholderHandler}>
+          <Button $theme={EButtonTheme.Primary} onClick={placeholderHandler}>
             Save & Send
           </Button>
         </S.PrimaryActionsGroup>
