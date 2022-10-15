@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 export const Header = styled.header`
   height: 100vh;
   width: 100px;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   background-color: ${({ theme }) => theme.colors.slateGray};
