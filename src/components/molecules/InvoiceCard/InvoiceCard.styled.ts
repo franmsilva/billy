@@ -6,7 +6,7 @@ export const InvoiceCard = styled.article`
   height: 72px;
   width: 100%;
   display: grid;
-  grid-template-columns: 0.5fr repeat(4, 1fr) auto;
+  grid-template-columns: 0.5fr 1.25fr repeat(3, 1fr) auto;
   align-items: center;
   background-color: white;
   padding: 16px 24px 16px 32px;
@@ -17,9 +17,9 @@ const FlexColumn = styled.div`
   display: flex;
 `;
 
-export const RightColumn = styled(FlexColumn)``;
+export const LeftColumn = styled(FlexColumn)``;
 
-export const LeftColumn = styled(FlexColumn)`
+export const RightColumn = styled(FlexColumn)`
   justify-content: flex-end;
 `;
 

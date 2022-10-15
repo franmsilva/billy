@@ -23,27 +23,27 @@ const InvoiceCard: FC<InvoiceCardProps> = ({ id, code, name, paymentDate, total,
   return (
     <Link key={id} href={`/invoices/${id}`}>
       <S.InvoiceCard>
-        <S.RightColumn>
+        <S.LeftColumn>
           <S.CodePrefix displayAs={ETypography.H4}>#</S.CodePrefix>
           <S.Code displayAs={ETypography.H4}>{code}</S.Code>
-        </S.RightColumn>
-        <S.RightColumn>
+        </S.LeftColumn>
+        <S.CenterColumn>
           <S.ClientDetails displayAs={ETypography.Body}>
             Due {format(new Date(paymentDate), 'dd MMM yyyy')}
           </S.ClientDetails>
-        </S.RightColumn>
-        <S.RightColumn>
-          <S.ClientDetails displayAs={ETypography.Body}>{name}</S.ClientDetails>
-        </S.RightColumn>
+        </S.CenterColumn>
         <S.LeftColumn>
+          <S.ClientDetails displayAs={ETypography.Body}>{name}</S.ClientDetails>
+        </S.LeftColumn>
+        <S.CenterColumn>
           <Typography displayAs={ETypography.H3}>
             <span>€</span> {total.toLocaleString()}
           </Typography>
-        </S.LeftColumn>
+        </S.CenterColumn>
         <S.CenterColumn>
           <Status status={status} />
         </S.CenterColumn>
-        <Image src="icon-arrow-right.svg" alt="Arrow right" width={10} height={12} />
+        <Image src="/icon-arrow-right.svg" alt="Arrow right" width={10} height={12} />
       </S.InvoiceCard>
     </Link>
   );
