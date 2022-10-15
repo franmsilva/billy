@@ -20,7 +20,7 @@ export const Heading2 = css`
 
 export const Heading3 = css`
   ${baseFont}
-  ${({ theme }) => theme.fontSize['l']};
+  ${({ theme }) => theme.fontSize['lg']};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   letter-spacing: -0.8px;
 `;
