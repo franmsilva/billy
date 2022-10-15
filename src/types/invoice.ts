@@ -29,6 +29,7 @@ export interface IInvoiceItem {
 }
 
 export interface IInvoiceFormData {
+  status: EInvoiceStatus;
   client: IInvoiceClient;
   terms: IInvoiceTerms;
   invoiceItems: IInvoiceItem[];
@@ -36,7 +37,10 @@ export interface IInvoiceFormData {
 
 export interface IInvoice extends IInvoiceClient, IInvoiceTerms {
   id: string;
+  code: string;
+  status: EInvoiceStatus;
   invoiceItems: IInvoiceItem[];
+  total: number;
   createdAt: string;
   updatedAt: string;
 }

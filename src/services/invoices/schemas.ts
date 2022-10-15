@@ -16,6 +16,8 @@ const InvoiceItemSchema = new dynamoose.Schema({
 export const InvoiceSchema = new dynamoose.Schema(
   {
     id: String,
+    code: String,
+    status: String,
     name: String,
     email: String,
     address: {
@@ -29,6 +31,7 @@ export const InvoiceSchema = new dynamoose.Schema(
       type: Array,
       schema: [InvoiceItemSchema],
     },
+    total: Number,
   },
   {
     timestamps: true,
