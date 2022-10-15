@@ -1,3 +1,8 @@
+export enum EInvoiceStatus {
+  Draft = 'Draft',
+  Paid = 'Paid',
+  Pending = 'Pending',
+}
 export interface IInvoiceAddress {
   street: string;
   city: string;

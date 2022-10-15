@@ -16,10 +16,14 @@ declare module 'styled-components' {
       mirage: '#1E2139';
       mirageLight: '#252945';
       mirageDark: '#141625';
-      slateGray: '#373b53';
+      slateGray: '#373B53';
+      eucalyptus: '#33D69F';
+      darkOrange: '#FF8F00';
     };
     borderRadius: {
       4: '4px';
+      6: '6px';
+      8: '8px';
       20: '20px';
       24: '24px';
     };
