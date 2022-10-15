@@ -26,6 +26,7 @@ const Button: FC<ButtonProps> = ({
   $theme = EButtonTheme.Primary,
   fullWidth,
   onClick,
+  className,
   children,
 }) => {
   const shouldRenderIcon = icon && $theme === EButtonTheme.Primary;
@@ -35,6 +36,7 @@ const Button: FC<ButtonProps> = ({
       $btnTheme={$theme}
       $fullWidth={fullWidth}
       $hasIcon={shouldRenderIcon}
+      className={className}
       onClick={onClick}
     >
       {shouldRenderIcon && (
