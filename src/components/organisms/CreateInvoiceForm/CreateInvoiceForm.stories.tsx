@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 
-import { InvoiceFormProvider } from '@src/contexts/CreateInvoiceFormContext';
+import { InvoiceFormProvider } from '@src/contexts/InvoiceFormContext';
 
 import CreateInvoiceForm from './CreateInvoiceForm';
 

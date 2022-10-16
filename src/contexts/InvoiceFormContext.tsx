@@ -1,8 +1,19 @@
-import { ChangeEvent, createContext, FC, ReactNode, useContext, useState } from 'react';
+import {
+  ChangeEvent,
+  createContext,
+  Dispatch,
+  FC,
+  ReactNode,
+  SetStateAction,
+  useContext,
+  useState,
+} from 'react';
 
-import { IInvoiceFormData } from '@src/types/invoice';
+import { EInvoiceStatus } from '@enums/invoices';
+import { Invoice } from '@types';
 
-interface IInvoiceFormContext extends IInvoiceFormData {
+interface IInvoiceFormContext extends Invoice.IFormData {
+  setStatus: Dispatch<SetStateAction<EInvoiceStatus>>;
   handleClientFieldChange(e: ChangeEvent<HTMLInputElement>): void;
   handleTermsFieldChange(e: ChangeEvent<HTMLInputElement>): void;
   handleInvoiceItemChange(e: ChangeEvent<HTMLInputElement>, index: number): void;
@@ -10,7 +21,8 @@ interface IInvoiceFormContext extends IInvoiceFormData {
   handleInvoiceItemDelete(index: number): void;
 }
 
-const defaultInvoiceFormState: IInvoiceFormData = {
+const defaultInvoiceFormState: Invoice.IFormData = {
+  status: EInvoiceStatus.Draft,
   client: {
     name: '',
     email: '',
@@ -50,6 +62,7 @@ export const InvoiceFormProvider: FC<IInvoiceFormProviderProps> = ({
   initialFormState = defaultInvoiceFormState,
   children,
 }) => {
+  const [status, setStatus] = useState(initialFormState.status);
   const [client, setClient] = useState(initialFormState.client);
   const [terms, setTerms] = useState(initialFormState.terms);
   const [invoiceItems, setInvoiceItems] = useState(initialFormState.invoiceItems);
@@ -98,9 +111,11 @@ export const InvoiceFormProvider: FC<IInvoiceFormProviderProps> = ({
   return (
     <InvoiceFormContext.Provider
       value={{
+        status,
         client,
         terms,
         invoiceItems,
+        setStatus,
         handleClientFieldChange,
         handleTermsFieldChange,
         handleInvoiceItemChange,

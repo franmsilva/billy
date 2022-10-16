@@ -4,7 +4,7 @@ import { ETypographyVariant } from '@enums/typography';
 import Button from '@src/components/atoms/Button';
 import { EButtonTheme } from '@src/components/atoms/Button/Button';
 import Input from '@src/components/atoms/Input/Input';
-import { useInvoiceFormContext } from '@src/contexts/CreateInvoiceFormContext';
+import { useInvoiceFormContext } from '@src/contexts/InvoiceFormContext';
 
 import InvoiceItemsTable from '../../molecules/InvoiceItemsTable/InvoiceItemsTable';
 

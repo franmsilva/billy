@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { useInvoiceFormContext } from '@src/contexts/CreateInvoiceFormContext';
+import { useInvoiceFormContext } from '@src/contexts/InvoiceFormContext';
 
 import InvoiceItemsRow from './InvoiceItemsRow';
 import * as S from './InvoiceItemsTable.styled';
