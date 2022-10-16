@@ -30,6 +30,8 @@ const create = async (payload: IInvoiceFormData) => {
     invoiceItems,
     ...client,
     ...terms,
+    // Temporary solution while we look for a performant way
+    // to track the number of items in the table and increment it
     code: id.slice(0, 6),
     total: getInvoiceItemsTotal(invoiceItems),
   }).save();
