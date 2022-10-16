@@ -1,37 +1,17 @@
 {
   "compilerOptions": {
     "target": "ES6",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "baseUrl": "./src",
     "paths": {
-      "@src/*": [
-        "./*"
-      ],
-      "@mocks/*": [
-        "./__mocks__/*"
-      ],
-      "@components/*": [
-        "./components/*"
-      ],
-      "@constants/*": [
-        "./constants/*"
-      ],
-      "@enums/*": [
-        "./enums/*"
-      ],
-      "@services/*": [
-        "./services/*"
-      ],
-      "@styles/*": [
-        "./styles/*"
-      ],
-      "@types": [
-        "./types/index.ts"
-      ]
+      "@mocks/*": ["./__mocks__/*"],
+      "@components/*": ["./components/*"],
+      "@constants/*": ["./constants/*"],
+      "@enums/*": ["./types/enums/*"],
+      "@services/*": ["./services/*"],
+      "@types": ["./types/index.ts"],
+      "@styles/*": ["./styles/*"],
+      "@src/*": ["./*"]
     },
     "allowJs": true,
     "skipLibCheck": true,
@@ -46,13 +26,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": [
-    "next-env.d.ts",
-    "./src/types/styled-components.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "./src/types/styled-components.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }
