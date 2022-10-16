@@ -2,26 +2,22 @@ import axios from 'axios';
 import { FC } from 'react';
 import useSWR from 'swr';
 
-import { EButtonTheme } from '@src/components/atoms/Button';
-import Typography from '@src/components/atoms/Typography';
-import InvoiceCard from '@src/components/molecules/InvoiceCard';
+import { EButtonTheme } from '@components/atoms/Button';
+import Typography from '@components/atoms/Typography';
+import InvoiceCardList from '@components/organisms/InvoiceCardList';
+import { ETypographyVariant } from '@enums/typography';
 import CoreLayout from '@src/layouts/core';
-import { IInvoice } from '@src/types/invoice';
-import { ETypography } from '@src/types/typography';
+import { Invoice } from '@types';
 
 import * as S from './index.styled';
 
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 const InvoicesPage: FC = () => {
-  const { data, error } = useSWR<{ invoices: IInvoice[] }>('/api/invoices', fetcher);
+  const { data, error } = useSWR<{ invoices: Invoice.IModel[] }>('/api/invoices', fetcher);
 
   if (error) {
-    return <Typography displayAs={ETypography.H3}>Oopsy</Typography>;
-  }
-
-  if (!data) {
-    return <Typography displayAs={ETypography.H3}>Loading...</Typography>;
+    return <Typography displayAs={ETypographyVariant.H3}>Oopsy</Typography>;
   }
 
   const openCreateInvoiceForm = () => {
@@ -32,14 +28,16 @@ const InvoicesPage: FC = () => {
     <CoreLayout>
       <S.Header>
         <S.Headings>
-          <Typography displayAs={ETypography.H1}>Invoices</Typography>
-          <S.Subheading
-            displayAs={ETypography.Body}
-          >{`There are ${data.invoices.length} total invoices`}</S.Subheading>
+          <Typography displayAs={ETypographyVariant.H1}>Invoices</Typography>
+          {data && (
+            <S.Subheading
+              displayAs={ETypographyVariant.Body}
+            >{`There are ${data.invoices.length} total invoices`}</S.Subheading>
+          )}
         </S.Headings>
         <S.Actions>
           {/* TODO: Turn into dropdown */}
-          <Typography displayAs={ETypography.H4}>Filter by status</Typography>
+          <Typography displayAs={ETypographyVariant.H4}>Filter by status</Typography>
           <S.Button
             icon="/icon-plus.svg"
             $theme={EButtonTheme.Primary}
@@ -49,26 +47,11 @@ const InvoicesPage: FC = () => {
           </S.Button>
         </S.Actions>
       </S.Header>
-      <S.InvoiceCardList>
-        {data.invoices.map((invoice) => (
-          <InvoiceCard key={invoice.id} {...invoice} />
-        ))}
-        {data.invoices.map((invoice) => (
-          <InvoiceCard key={invoice.id} {...invoice} />
-        ))}
-        {data.invoices.map((invoice) => (
-          <InvoiceCard key={invoice.id} {...invoice} />
-        ))}
-        {data.invoices.map((invoice) => (
-          <InvoiceCard key={invoice.id} {...invoice} />
-        ))}
-        {data.invoices.map((invoice) => (
-          <InvoiceCard key={invoice.id} {...invoice} />
-        ))}
-        {data.invoices.map((invoice) => (
-          <InvoiceCard key={invoice.id} {...invoice} />
-        ))}
-      </S.InvoiceCardList>
+      {data ? (
+        <InvoiceCardList invoices={data.invoices} />
+      ) : (
+        <Typography displayAs={ETypographyVariant.H3}>Loading...</Typography>
+      )}
     </CoreLayout>
   );
 };

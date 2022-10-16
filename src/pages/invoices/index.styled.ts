@@ -27,8 +27,3 @@ export const Actions = styled.div`
 export const Button = styled(UnstyledButton)`
   margin-left: 40px;
 `;
-
-export const InvoiceCardList = styled.div`
-  display: grid;
-  row-gap: 16px;
-`;
