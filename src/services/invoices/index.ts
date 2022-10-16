@@ -1,7 +1,7 @@
 import dynamoose from 'dynamoose';
 import { v4 as uuidv4 } from 'uuid';
 
-import { IInvoiceFormData, IInvoiceItem } from '@src/types/invoice';
+import { Invoice } from '@types';
 
 import { InvoiceSchema } from './schemas';
 
@@ -17,10 +17,10 @@ dynamoose.aws.ddb.set(ddb);
 
 const InvoiceModel = dynamoose.model(process.env.INVOICES_TABLE_NAME, InvoiceSchema);
 
-const getInvoiceItemsTotal = (items: IInvoiceItem[]) =>
+const getInvoiceItemsTotal = (items: Invoice.IItem[]) =>
   items.reduce((total, item) => total + item.price * item.quantity, 0);
 
-const create = async (payload: IInvoiceFormData) => {
+const create = async (payload: Invoice.IFormData) => {
   const id = uuidv4();
   const { status, client, terms, invoiceItems } = payload;
 
@@ -41,7 +41,7 @@ const get = async (id: string) => InvoiceModel.get(id);
 
 const getAll = async () => InvoiceModel.scan().exec();
 
-const update = async (id: string, updateObj: Partial<IInvoiceFormData>) => {
+const update = async (id: string, updateObj: Partial<Invoice.IFormData>) => {
   const { status, client, terms, invoiceItems } = updateObj;
 
   InvoiceModel.update(
