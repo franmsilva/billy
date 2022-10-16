@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 
-import { EInvoiceStatus } from '@src/types/invoice';
+import { EInvoiceStatus } from '@enums/invoices';
 
 import InvoiceCard from './InvoiceCard';
 

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { FC, MouseEventHandler, ReactNode } from 'react';
 
-import { IStyledComponent } from '@src/types/core';
+import { Core } from '@types';
 
 import * as S from './Button.styled';
 
@@ -12,7 +12,7 @@ export enum EButtonTheme {
   Danger = 'Danger',
 }
 
-interface ButtonProps extends IStyledComponent {
+interface ButtonProps extends Core.IStyledComponent {
   icon?: string;
   // Prefixed to avoid clash with styled-components theme prop
   $theme?: EButtonTheme;

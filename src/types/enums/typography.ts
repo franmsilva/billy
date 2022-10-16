@@ -1,4 +1,4 @@
-export enum ETypography {
+export enum ETypographyVariant {
   'H1',
   'H2',
   'H3',

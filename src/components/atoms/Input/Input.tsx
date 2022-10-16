@@ -1,6 +1,6 @@
 import { ChangeEventHandler, FC } from 'react';
 
-import { ETypography } from '@src/types/typography';
+import { ETypographyVariant } from '@enums/typography';
 
 import * as S from './Input.styled';
 
@@ -16,7 +16,7 @@ const Input: FC<InputProps> = ({ id, name, value, label, type, placeholder, onCh
   return (
     <S.Wrapper>
       {label && (
-        <S.Label as="label" displayAs={ETypography.Body} htmlFor={id}>
+        <S.Label as="label" displayAs={ETypographyVariant.Body} htmlFor={id}>
           {label}
         </S.Label>
       )}

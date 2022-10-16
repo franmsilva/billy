@@ -1,23 +1,23 @@
 import styled, { DefaultTheme, FlattenInterpolation, ThemeProps } from 'styled-components';
 
-import { ETypography } from '@src/types/typography';
+import { ETypographyVariant } from '@enums/typography';
 
 import { Body, BodySm, Heading1, Heading2, Heading3, Heading4 } from './Typography.styled';
 
 interface TypographyProps {
-  displayAs: ETypography;
+  displayAs: ETypographyVariant;
 }
 
 const TYPOGRAPHY_TYPE_TO_STYLES_MAP: Record<
-  ETypography,
+  ETypographyVariant,
   FlattenInterpolation<ThemeProps<DefaultTheme>>
 > = {
-  [ETypography.H1]: Heading1,
-  [ETypography.H2]: Heading2,
-  [ETypography.H3]: Heading3,
-  [ETypography.H4]: Heading4,
-  [ETypography.Body]: Body,
-  [ETypography.BodySm]: BodySm,
+  [ETypographyVariant.H1]: Heading1,
+  [ETypographyVariant.H2]: Heading2,
+  [ETypographyVariant.H3]: Heading3,
+  [ETypographyVariant.H4]: Heading4,
+  [ETypographyVariant.Body]: Body,
+  [ETypographyVariant.BodySm]: BodySm,
 };
 
 const Typography = styled.span<TypographyProps>`

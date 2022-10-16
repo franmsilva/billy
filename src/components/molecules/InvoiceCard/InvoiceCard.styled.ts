@@ -11,6 +11,7 @@ export const InvoiceCard = styled.article`
   background-color: white;
   padding: 16px 24px 16px 32px;
   border-radius: ${({ theme }) => theme.borderRadius[8]};
+  cursor: pointer;
 `;
 
 const FlexColumn = styled.div`

@@ -1,14 +1,14 @@
 import Image from 'next/image';
 import { ChangeEvent, FC } from 'react';
 
+import { ETypographyVariant } from '@enums/typography';
 import Input from '@src/components/atoms/Input';
-import { IInvoiceItem } from '@src/types/invoice';
-import { ETypography } from '@src/types/typography';
+import { Invoice } from '@types';
 
 import * as S from '../InvoiceItemsTable.styled';
 
 interface IInvoiceItemsRowProps {
-  item: IInvoiceItem;
+  item: Invoice.IItem;
   index: number;
   handleChange: (e: ChangeEvent, index: number) => void;
   handleDelete: (index: number) => void;
@@ -48,7 +48,7 @@ const InvoiceItemsRow: FC<IInvoiceItemsRowProps> = ({
         />
       </S.BodyCell>
       <S.BodyCell>
-        <S.Total as="p" displayAs={ETypography.H4}>
+        <S.Total as="p" displayAs={ETypographyVariant.H4}>
           {item.quantity * item.price}
         </S.Total>
       </S.BodyCell>

@@ -1,10 +1,10 @@
 import { FC } from 'react';
 
+import { ETypographyVariant } from '@enums/typography';
 import Button from '@src/components/atoms/Button';
 import { EButtonTheme } from '@src/components/atoms/Button/Button';
 import Input from '@src/components/atoms/Input/Input';
 import { useInvoiceFormContext } from '@src/contexts/CreateInvoiceFormContext';
-import { ETypography } from '@src/types/typography';
 
 import InvoiceItemsTable from '../../molecules/InvoiceItemsTable/InvoiceItemsTable';
 
@@ -26,12 +26,12 @@ const CreateInvoiceForm: FC = () => {
 
   return (
     <S.Form onSubmit={() => console.log({ client, terms, invoiceItems })}>
-      <S.Header as="h2" displayAs={ETypography.H2}>
+      <S.Header as="h2" displayAs={ETypographyVariant.H2}>
         New Invoice
       </S.Header>
       <S.ScrollableContent>
         <S.FieldSet>
-          <S.Subheading as="h4" displayAs={ETypography.H4}>
+          <S.Subheading as="h4" displayAs={ETypographyVariant.H4}>
             Bill To
           </S.Subheading>
           <Input
@@ -80,7 +80,7 @@ const CreateInvoiceForm: FC = () => {
           </S.Row>
         </S.FieldSet>
         <S.FieldSet>
-          <S.Subheading as="h4" displayAs={ETypography.H4}>
+          <S.Subheading as="h4" displayAs={ETypographyVariant.H4}>
             Terms
           </S.Subheading>
           <S.Row>
@@ -110,7 +110,7 @@ const CreateInvoiceForm: FC = () => {
           />
         </S.FieldSet>
         <S.FieldSet>
-          <S.Subheading as="h4" displayAs={ETypography.H4}>
+          <S.Subheading as="h4" displayAs={ETypographyVariant.H4}>
             Item List
           </S.Subheading>
           <InvoiceItemsTable />

@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { css, FlattenSimpleInterpolation } from 'styled-components';
 
+import { EInvoiceStatus } from '@enums/invoices';
+import { ETypographyVariant } from '@enums/typography';
 import { Theme } from '@src/styles/theme';
-import { EInvoiceStatus } from '@src/types/invoice';
-import { ETypography } from '@src/types/typography';
 
 import * as S from './Status.styled';
 
@@ -38,7 +38,7 @@ const Status: FC<StatusProps> = ({ status }) => {
     <>
       <S.Container $bgColor={bgColor} $color={color}>
         <S.Dot $color={color} />
-        <S.Copy displayAs={ETypography.H4}>{status}</S.Copy>
+        <S.Copy displayAs={ETypographyVariant.H4}>{status}</S.Copy>
       </S.Container>
     </>
   );
