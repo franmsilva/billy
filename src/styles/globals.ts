@@ -34,6 +34,7 @@ export const GlobalStyles = createGlobalStyle`
     border: 1px solid black;
     outline: none;
     appearance: none;
+    font-family: 'League Spartan', sans-serif;
   }
 
   input::-webkit-outer-spin-button,
