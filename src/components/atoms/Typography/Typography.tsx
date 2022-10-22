@@ -1,4 +1,4 @@
-import styled, { DefaultTheme, FlattenInterpolation, ThemeProps } from 'styled-components';
+import styled, { css, DefaultTheme, FlattenInterpolation, ThemeProps } from 'styled-components';
 
 import { ETypographyVariant } from '@enums/typography';
 
@@ -6,6 +6,7 @@ import { Body, BodySm, Heading1, Heading2, Heading3, Heading4 } from './Typograp
 
 interface TypographyProps {
   displayAs: ETypographyVariant;
+  $color?: string;
 }
 
 const TYPOGRAPHY_TYPE_TO_STYLES_MAP: Record<
@@ -21,7 +22,13 @@ const TYPOGRAPHY_TYPE_TO_STYLES_MAP: Record<
 };
 
 const Typography = styled.span<TypographyProps>`
-  ${({ displayAs }) => TYPOGRAPHY_TYPE_TO_STYLES_MAP[displayAs]}
+  ${({ displayAs, $color }) => css`
+    ${TYPOGRAPHY_TYPE_TO_STYLES_MAP[displayAs]}
+    ${$color &&
+    css`
+      color: ${$color};
+    `}
+  `}
 `;
 
 export default Typography;
