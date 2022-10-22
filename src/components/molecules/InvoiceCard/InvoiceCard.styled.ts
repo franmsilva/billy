@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
 import Typography from '@src/components/atoms/Typography';
+import { boxShadow } from '@styles/snippets';
 
 export const InvoiceCard = styled.article`
+  ${boxShadow}
   height: 72px;
   width: 100%;
   display: grid;
@@ -11,7 +13,12 @@ export const InvoiceCard = styled.article`
   background-color: white;
   padding: 16px 24px 16px 32px;
   border-radius: ${({ theme }) => theme.borderRadius[8]};
+  transition: transform 100ms ease-in-out;
   cursor: pointer;
+
+  :hover {
+    transform: scale(1.05, 1.05);
+  }
 `;
 
 const FlexColumn = styled.div`
