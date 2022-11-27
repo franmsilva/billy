@@ -34,6 +34,11 @@ declare module 'styled-components' {
       xl: FlattenSimpleInterpolation;
       '2xl': FlattenSimpleInterpolation;
     };
+    zIndex: {
+      overlay: 20;
+      dialog: 30;
+      navbar: 40;
+    };
     fontWeight: {
       bold: 700;
       medium: 500;

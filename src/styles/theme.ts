@@ -50,6 +50,11 @@ export const Theme: DefaultTheme = {
       line-height: ${36 / BASE_FONT_SIZE}rem;
     `,
   },
+  zIndex: {
+    overlay: 20,
+    dialog: 30,
+    navbar: 40,
+  },
   fontWeight: {
     bold: 700,
     medium: 500,
