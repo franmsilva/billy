@@ -14,6 +14,7 @@ export const Header = styled.header`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  z-index: ${({ theme }) => theme.zIndex.navbar};
 `;
 
 export const LogoContainer = styled.div`

@@ -6,6 +6,7 @@ import { EButtonTheme } from '@components/atoms/Button';
 import Typography from '@components/atoms/Typography';
 import InvoiceCardList from '@components/organisms/InvoiceCardList';
 import { ETypographyVariant } from '@enums/typography';
+import { EContentDrawerForm, useContentDrawerContext } from '@src/contexts/ContentDrawerContext';
 import CoreLayout from '@src/layouts/core';
 import { Invoice } from '@types';
 
@@ -15,14 +16,11 @@ const InvoicesPage: FC = () => {
   const { data, error } = useQuery(['invoices'], () =>
     axios.get<{ invoices: Invoice.IModel[] }>('/api/invoices').then((data) => data.data)
   );
+  const { openContentDrawer } = useContentDrawerContext();
 
   if (error) {
     return <Typography displayAs={ETypographyVariant.H3}>Oopsy</Typography>;
   }
-
-  const openCreateInvoiceForm = () => {
-    console.log('Should open create invoice form...');
-  };
 
   return (
     <CoreLayout>
@@ -41,7 +39,7 @@ const InvoicesPage: FC = () => {
           <S.Button
             icon="/icon-plus.svg"
             $theme={EButtonTheme.Primary}
-            onClick={openCreateInvoiceForm}
+            onClick={() => openContentDrawer(EContentDrawerForm.CreateInvoice)}
           >
             New Invoice
           </S.Button>

@@ -3,6 +3,7 @@ import {
   createContext,
   Dispatch,
   FC,
+  MouseEventHandler,
   ReactNode,
   SetStateAction,
   useContext,
@@ -17,7 +18,7 @@ interface IInvoiceFormContext extends Invoice.IFormData {
   handleClientFieldChange(e: ChangeEvent<HTMLInputElement>): void;
   handleTermsFieldChange(e: ChangeEvent<HTMLInputElement>): void;
   handleInvoiceItemChange(e: ChangeEvent<HTMLInputElement>, index: number): void;
-  handleInvoiceItemAdd(): void;
+  handleInvoiceItemAdd: MouseEventHandler;
   handleInvoiceItemDelete(index: number): void;
 }
 
@@ -46,7 +47,7 @@ const InvoiceFormContext = createContext<IInvoiceFormContext>({} as IInvoiceForm
 export const useInvoiceFormContext = () => {
   const invoiceFormContext = useContext(InvoiceFormContext);
 
-  if (!invoiceFormContext) {
+  if (!Object.keys(invoiceFormContext).length) {
     throw new Error('Use within CreateInvoiceProvider!');
   }
 
@@ -98,7 +99,8 @@ export const InvoiceFormProvider: FC<IInvoiceFormProviderProps> = ({
     setInvoiceItems(data);
   };
 
-  const handleInvoiceItemAdd = () => {
+  const handleInvoiceItemAdd = (e) => {
+    e.preventDefault();
     setInvoiceItems([...invoiceItems, { name: 'New Item', quantity: 0, price: 0 }]);
   };
 

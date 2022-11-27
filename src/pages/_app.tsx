@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { ThemeProvider } from 'styled-components';
 
+import { ContentDrawerProvider } from '@src/contexts/ContentDrawerContext';
 import { GlobalStyles } from '@styles/globals';
 import { Theme } from '@styles/theme';
 
@@ -14,7 +15,9 @@ export default function App({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={Theme}>
         <GlobalStyles />
-        <Component {...pageProps} />
+        <ContentDrawerProvider>
+          <Component {...pageProps} />
+        </ContentDrawerProvider>
       </ThemeProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

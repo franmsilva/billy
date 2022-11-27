@@ -2,6 +2,7 @@ import * as NextImage from 'next/image';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 
+import { ContentDrawerProvider } from '../src/contexts/ContentDrawerContext';
 import { GlobalStyles } from '../src/styles/globals';
 import { Theme } from '../src/styles/theme';
 
@@ -65,7 +66,9 @@ export const decorators = [
   (Story) => (
     <ThemeProvider theme={Theme}>
       <GlobalStyles />
-      <Story />
+      <ContentDrawerProvider>
+        <Story />
+      </ContentDrawerProvider>
     </ThemeProvider>
   ),
 ];
