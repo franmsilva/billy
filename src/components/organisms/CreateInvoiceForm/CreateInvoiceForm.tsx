@@ -4,6 +4,7 @@ import { ETypographyVariant } from '@enums/typography';
 import Button from '@src/components/atoms/Button';
 import { EButtonTheme } from '@src/components/atoms/Button/Button';
 import Input from '@src/components/atoms/Input/Input';
+import { useContentDrawerContext } from '@src/contexts/ContentDrawerContext';
 import { useInvoiceFormContext } from '@src/contexts/InvoiceFormContext';
 
 import InvoiceItemsTable from '../../molecules/InvoiceItemsTable/InvoiceItemsTable';
@@ -19,6 +20,7 @@ const CreateInvoiceForm: FC = () => {
     handleTermsFieldChange,
     handleInvoiceItemAdd,
   } = useInvoiceFormContext();
+  const { closeContentDrawer } = useContentDrawerContext();
 
   const placeholderHandler = () => {
     console.log('Placeholder Handler');
@@ -120,7 +122,7 @@ const CreateInvoiceForm: FC = () => {
         </S.FieldSet>
       </S.ScrollableContent>
       <S.Footer>
-        <Button $theme={EButtonTheme.Tertiary} onClick={placeholderHandler}>
+        <Button $theme={EButtonTheme.Tertiary} onClick={closeContentDrawer}>
           Discard
         </Button>
         <S.PrimaryActionsGroup>
