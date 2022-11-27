@@ -42,7 +42,8 @@ export const ContentDrawerProvider: FC<IContentDrawerProviverProps> = ({ childre
   const [isOpen, setIsOpen] = useState(false);
   const [formType, setFormType] = useState(EContentDrawerForm.CreateInvoice);
 
-  const closeContentDrawer = () => {
+  const closeContentDrawer = (e) => {
+    e.preventDefault();
     setIsOpen(false);
   };
 
