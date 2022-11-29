@@ -2,7 +2,7 @@ import {
   createContext,
   Dispatch,
   FC,
-  MouseEventHandler,
+  MouseEvent,
   ReactNode,
   SetStateAction,
   useContext,
@@ -14,7 +14,7 @@ interface IContentDrawerContext {
   formType: EContentDrawerForm;
   setFormType: Dispatch<SetStateAction<EContentDrawerForm>>;
   openContentDrawer: (formType: EContentDrawerForm) => void;
-  closeContentDrawer: MouseEventHandler;
+  closeContentDrawer: (event?: MouseEvent) => void;
 }
 
 const ContentDrawerContext = createContext<IContentDrawerContext>({} as IContentDrawerContext);
@@ -42,12 +42,14 @@ export const ContentDrawerProvider: FC<IContentDrawerProviverProps> = ({ childre
   const [isOpen, setIsOpen] = useState(false);
   const [formType, setFormType] = useState(EContentDrawerForm.CreateInvoice);
 
-  const closeContentDrawer = (e) => {
-    e.preventDefault();
+  const closeContentDrawer = (event) => {
+    if (event) event.preventDefault();
+
     setIsOpen(false);
   };
 
-  const openContentDrawer = () => {
+  const openContentDrawer = (formType: EContentDrawerForm) => {
+    setFormType(formType);
     setIsOpen(true);
   };
 

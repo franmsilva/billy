@@ -14,6 +14,7 @@ export enum EButtonTheme {
 
 interface ButtonProps extends Core.IStyledComponent {
   icon?: string;
+  name?: string;
   // Prefixed to avoid clash with styled-components theme prop
   $theme?: EButtonTheme;
   fullWidth?: boolean;
@@ -23,6 +24,7 @@ interface ButtonProps extends Core.IStyledComponent {
 
 const Button: FC<ButtonProps> = ({
   icon,
+  name,
   $theme = EButtonTheme.Primary,
   fullWidth,
   onClick,
@@ -36,6 +38,7 @@ const Button: FC<ButtonProps> = ({
       $btnTheme={$theme}
       $fullWidth={fullWidth}
       $hasIcon={shouldRenderIcon}
+      name={name}
       className={className}
       onClick={onClick}
     >
