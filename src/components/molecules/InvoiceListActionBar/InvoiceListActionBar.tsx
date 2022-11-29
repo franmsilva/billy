@@ -5,13 +5,13 @@ import Typography from '@components/atoms/Typography';
 import { ETypographyVariant } from '@enums/typography';
 import { EContentDrawerForm, useContentDrawerContext } from '@src/contexts/ContentDrawerContext';
 
-import * as S from './InvoicePageHeader.styled';
+import * as S from './InvoiceListActionBar.styled';
 
-interface InvoicePageHeaderProps {
+interface IInvoiceListActionBarProps {
   invoiceCount: number;
 }
 
-const InvoicePageHeader: FC<InvoicePageHeaderProps> = ({ invoiceCount }) => {
+const InvoiceListActionBar: FC<IInvoiceListActionBarProps> = ({ invoiceCount }) => {
   const { openContentDrawer } = useContentDrawerContext();
 
   return (
@@ -37,4 +37,4 @@ const InvoicePageHeader: FC<InvoicePageHeaderProps> = ({ invoiceCount }) => {
   );
 };
 
-export default InvoicePageHeader;
+export default InvoiceListActionBar;

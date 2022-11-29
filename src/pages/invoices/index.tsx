@@ -3,7 +3,7 @@ import axios from 'axios';
 import { FC } from 'react';
 
 import Typography from '@components/atoms/Typography';
-import InvoicePageHeader from '@components/molecules/InvoicePageHeader';
+import InvoiceListActionBar from '@components/molecules/InvoiceListActionBar';
 import InvoiceCardList from '@components/organisms/InvoiceCardList';
 import { ETypographyVariant } from '@enums/typography';
 import CoreLayout from '@src/layouts/core';
@@ -20,7 +20,7 @@ const InvoicesPage: FC = () => {
 
   return (
     <CoreLayout>
-      <InvoicePageHeader invoiceCount={data?.invoices.length ?? 0} />
+      <InvoiceListActionBar invoiceCount={data?.invoices.length ?? 0} />
       {data ? (
         <InvoiceCardList invoices={data.invoices} />
       ) : (
