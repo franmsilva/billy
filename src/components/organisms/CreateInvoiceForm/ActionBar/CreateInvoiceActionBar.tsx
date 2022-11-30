@@ -19,7 +19,7 @@ const CreateInvoiceActionBar: FC = () => {
   const { client, terms, invoiceItems } = useInvoiceFormContext();
   const { closeContentDrawer } = useContentDrawerContext();
 
-  const updateInvoiceMutation = useMutation(
+  const createInvoiceMutation = useMutation(
     (payload: Invoice.IFormData) => axios.post(`/api/invoices`, payload),
     {
       onSuccess: async (data: AxiosResponse<Invoice.IModel>) => {
@@ -34,7 +34,7 @@ const CreateInvoiceActionBar: FC = () => {
 
     const isDraft = (e.target as HTMLButtonElement).name === CREATE_DRAFT_BTN_NAME;
 
-    updateInvoiceMutation.mutate({
+    createInvoiceMutation.mutate({
       status: isDraft ? EInvoiceStatus.Draft : EInvoiceStatus.Pending,
       client,
       terms,
@@ -43,7 +43,7 @@ const CreateInvoiceActionBar: FC = () => {
   };
 
   return (
-    <S.Footer>
+    <S.Container>
       <Button $theme={EButtonTheme.Tertiary} onClick={closeContentDrawer}>
         Discard
       </Button>
@@ -59,7 +59,7 @@ const CreateInvoiceActionBar: FC = () => {
           Save & Send
         </Button>
       </S.PrimaryActionsGroup>
-    </S.Footer>
+    </S.Container>
   );
 };
 

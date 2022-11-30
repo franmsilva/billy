@@ -8,7 +8,7 @@ import Button, { EButtonTheme } from '@components/atoms/Button';
 import Status from '@components/atoms/Status';
 import { EInvoiceStatus } from '@enums/invoices';
 import { ETypographyVariant } from '@enums/typography';
-import { EContentDrawerForm, useContentDrawerContext } from '@src/contexts/ContentDrawerContext';
+import { useContentDrawerContext } from '@src/contexts/ContentDrawerContext';
 import { Invoice } from '@types';
 
 import * as S from './InvoiceDetailsActionBar.styled';
@@ -39,7 +39,7 @@ const InvoiceDetailsActionBar: FC<IInvoiceDetailsActionBarProps> = ({
   const markInvoiceAsPaid = () => updateInvoiceMutation.mutate({ status: EInvoiceStatus.Paid });
 
   const editInvoice = () => {
-    openContentDrawer(EContentDrawerForm.UpdateInvoice);
+    openContentDrawer();
   };
 
   const deleteInvoice = () => {
