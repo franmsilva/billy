@@ -1,29 +1,25 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 
-import CreateInvoiceForm from '@components/organisms/CreateInvoiceForm';
-import { EContentDrawerForm, useContentDrawerContext } from '@src/contexts/ContentDrawerContext';
-import { InvoiceFormProvider } from '@src/contexts/InvoiceFormContext';
+import { useContentDrawerContext } from '@src/contexts/ContentDrawerContext';
 import { useClickOutside } from '@src/hooks/useClickOutside';
 
 import * as S from './Drawer.styled';
 
-const FORM_TYPE_MAP = {
-  [EContentDrawerForm.CreateInvoice]: CreateInvoiceForm,
-  [EContentDrawerForm.UpdateInvoice]: null,
-};
+interface IDrawerProps {
+  children: ReactNode;
+}
 
-const Drawer: FC = () => {
-  const { isOpen, formType, closeContentDrawer } = useContentDrawerContext();
+const Drawer: FC<IDrawerProps> = ({ children }) => {
+  const { isOpen, closeContentDrawer } = useContentDrawerContext();
   const ref = useClickOutside(closeContentDrawer);
-  const DrawerContent = FORM_TYPE_MAP[formType];
 
   return (
-    <InvoiceFormProvider>
+    <>
       <S.Overlay $isOpen={isOpen} />
       <S.Body id="drawer" $isOpen={isOpen} ref={ref}>
-        <DrawerContent />
+        {children}
       </S.Body>
-    </InvoiceFormProvider>
+    </>
   );
 };
 

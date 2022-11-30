@@ -1,6 +1,5 @@
 import { FC, ReactNode } from 'react';
 
-import Drawer from '@components/molecules/Drawer';
 import NavigationBar from '@components/molecules/NavigationBar';
 import { ContentDrawerProvider } from '@src/contexts/ContentDrawerContext';
 
@@ -13,7 +12,6 @@ interface CoreLayoutProps {
 const CoreLayout: FC<CoreLayoutProps> = ({ children }) => {
   return (
     <ContentDrawerProvider>
-      <Drawer />
       <NavigationBar />
       <S.MainContent>{children}</S.MainContent>
     </ContentDrawerProvider>

@@ -48,14 +48,14 @@ export const useInvoiceFormContext = () => {
   const invoiceFormContext = useContext(InvoiceFormContext);
 
   if (!Object.keys(invoiceFormContext).length) {
-    throw new Error('Use within CreateInvoiceProvider!');
+    throw new Error('Use within InvoiceFormProvider!');
   }
 
   return invoiceFormContext;
 };
 
 interface IInvoiceFormProviderProps {
-  initialFormState?: IInvoiceFormContext;
+  initialFormState?: Invoice.IFormData;
   children: ReactNode;
 }
 

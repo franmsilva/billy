@@ -1,19 +1,8 @@
-import {
-  createContext,
-  Dispatch,
-  FC,
-  MouseEvent,
-  ReactNode,
-  SetStateAction,
-  useContext,
-  useState,
-} from 'react';
+import { createContext, FC, MouseEvent, ReactNode, useContext, useState } from 'react';
 
 interface IContentDrawerContext {
   isOpen: boolean;
-  formType: EContentDrawerForm;
-  setFormType: Dispatch<SetStateAction<EContentDrawerForm>>;
-  openContentDrawer: (formType: EContentDrawerForm) => void;
+  openContentDrawer: (event?: MouseEvent) => void;
   closeContentDrawer: (event?: MouseEvent) => void;
 }
 
@@ -33,14 +22,8 @@ interface IContentDrawerProviverProps {
   children: ReactNode;
 }
 
-export enum EContentDrawerForm {
-  CreateInvoice = 'create-invoice',
-  UpdateInvoice = 'update-invoice',
-}
-
 export const ContentDrawerProvider: FC<IContentDrawerProviverProps> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [formType, setFormType] = useState(EContentDrawerForm.CreateInvoice);
 
   const closeContentDrawer = (event) => {
     if (event) event.preventDefault();
@@ -48,8 +31,7 @@ export const ContentDrawerProvider: FC<IContentDrawerProviverProps> = ({ childre
     setIsOpen(false);
   };
 
-  const openContentDrawer = (formType: EContentDrawerForm) => {
-    setFormType(formType);
+  const openContentDrawer = () => {
     setIsOpen(true);
   };
 
@@ -57,8 +39,6 @@ export const ContentDrawerProvider: FC<IContentDrawerProviverProps> = ({ childre
     <ContentDrawerContext.Provider
       value={{
         isOpen,
-        formType,
-        setFormType,
         closeContentDrawer,
         openContentDrawer,
       }}
