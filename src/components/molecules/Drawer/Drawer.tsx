@@ -1,5 +1,6 @@
 import { FC, ReactNode } from 'react';
 
+import Overlay from '@components/atoms/Overlay';
 import { useContentDrawerContext } from '@src/contexts/ContentDrawerContext';
 import { useClickOutside } from '@src/hooks/useClickOutside';
 
@@ -15,7 +16,7 @@ const Drawer: FC<IDrawerProps> = ({ children }) => {
 
   return (
     <>
-      <S.Overlay $isOpen={isOpen} />
+      <Overlay $isOpen={isOpen} />
       <S.Body id="drawer" $isOpen={isOpen} ref={ref}>
         {children}
       </S.Body>
