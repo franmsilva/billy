@@ -7,6 +7,7 @@ import {
   ReactNode,
   SetStateAction,
   useContext,
+  useEffect,
   useState,
 } from 'react';
 
@@ -67,6 +68,13 @@ export const InvoiceFormProvider: FC<IInvoiceFormProviderProps> = ({
   const [client, setClient] = useState(initialFormState.client);
   const [terms, setTerms] = useState(initialFormState.terms);
   const [invoiceItems, setInvoiceItems] = useState(initialFormState.invoiceItems);
+
+  useEffect(() => {
+    setStatus(initialFormState.status);
+    setClient(initialFormState.client);
+    setTerms(initialFormState.terms);
+    setInvoiceItems(initialFormState.invoiceItems);
+  }, [initialFormState]);
 
   const handleClientFieldChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
