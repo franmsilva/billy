@@ -26,7 +26,7 @@ const deleteInvoice = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     const response = await InvoiceService.remove(id);
-    res.status(204).json(response);
+    res.status(200).json(response);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -40,8 +40,8 @@ const updateInvoice = async (req: NextApiRequest, res: NextApiResponse) => {
       throw new Error('Validation error: id slug is not a string');
     }
 
-    await InvoiceService.update(id, req.body);
-    res.status(204).json({ message: 'Success' });
+    const response = await InvoiceService.update(id, req.body);
+    res.status(200).json(response);
   } catch (err) {
     res.status(500).json(err);
   }
