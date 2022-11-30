@@ -4,8 +4,10 @@ import { useRouter } from 'next/router';
 import { FC } from 'react';
 
 import Typography from '@components/atoms/Typography';
+import Drawer from '@components/molecules/Drawer';
 import InvoiceDetails from '@components/molecules/InvoiceDetails';
 import InvoiceDetailsActionBar from '@components/molecules/InvoiceDetailsActionBar/InvoiceDetailsActionBar';
+import EditInvoiceForm from '@components/organisms/EditInvoiceForm';
 import { ETypographyVariant } from '@enums/typography';
 import CoreLayout from '@src/layouts/core';
 import { Invoice } from '@types';
@@ -25,7 +27,14 @@ const InvoicesPage: FC = () => {
   return (
     <CoreLayout>
       <InvoiceDetailsActionBar invoiceId={invoiceId} invoiceStatus={data?.status} />
-      {data && <InvoiceDetails invoice={data} />}
+      {data && (
+        <>
+          <InvoiceDetails invoice={data} />
+          <Drawer>
+            <EditInvoiceForm invoice={data} />
+          </Drawer>
+        </>
+      )}
     </CoreLayout>
   );
 };
