@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 
 import Button from '@components/atoms/Button';
-import { EContentDrawerForm, useContentDrawerContext } from '@src/contexts/ContentDrawerContext';
+import { useContentDrawerContext } from '@src/contexts/ContentDrawerContext';
 
 import Drawer from './Drawer';
 
@@ -16,8 +16,8 @@ const Template: ComponentStory<typeof Drawer> = () => {
 
   return (
     <>
-      <Button onClick={() => openContentDrawer(EContentDrawerForm.CreateInvoice)}>Open</Button>
-      <Drawer />
+      <Button onClick={() => openContentDrawer()}>Open</Button>
+      <Drawer>Anything can go here</Drawer>
     </>
   );
 };

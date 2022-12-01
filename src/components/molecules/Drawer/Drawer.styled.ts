@@ -11,7 +11,6 @@ export const Body = styled.div<{ $isOpen: boolean }>`
   background-color: white;
   z-index: ${({ theme }) => theme.zIndex.dialog};
   transition: left 0.2s ease-in-out;
-  display: 'none';
 
   ${({ $isOpen }) =>
     $isOpen &&
