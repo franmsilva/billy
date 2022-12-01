@@ -38,6 +38,7 @@ declare module 'styled-components' {
       overlay: 20;
       dialog: 30;
       navbar: 40;
+      modal: 50;
     };
     fontWeight: {
       bold: 700;

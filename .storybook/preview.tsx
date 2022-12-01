@@ -3,6 +3,7 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 
 import { ContentDrawerProvider } from '../src/contexts/ContentDrawerContext';
+import { ModalProvider } from '../src/contexts/ModalContext';
 import { GlobalStyles } from '../src/styles/globals';
 import { Theme } from '../src/styles/theme';
 
@@ -67,7 +68,9 @@ export const decorators = [
     <ThemeProvider theme={Theme}>
       <GlobalStyles />
       <ContentDrawerProvider>
-        <Story />
+        <ModalProvider>
+          <Story />
+        </ModalProvider>
       </ContentDrawerProvider>
     </ThemeProvider>
   ),
