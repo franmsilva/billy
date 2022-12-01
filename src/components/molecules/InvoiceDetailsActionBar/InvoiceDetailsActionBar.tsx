@@ -9,12 +9,14 @@ import Status from '@components/atoms/Status';
 import { EInvoiceStatus } from '@enums/invoices';
 import { ETypographyVariant } from '@enums/typography';
 import { useContentDrawerContext } from '@src/contexts/ContentDrawerContext';
+import { useModalContext } from '@src/contexts/ModalContext';
 import { Invoice } from '@types';
 
 import * as S from './InvoiceDetailsActionBar.styled';
 
 // invoiceId will always exist in the URL
 // invoiceStatus does not exist while query is in-flight
+// invoiceCode does not exist while query is in-flight
 interface IInvoiceDetailsActionBarProps {
   invoiceId: string;
   invoiceStatus?: EInvoiceStatus;
@@ -26,6 +28,7 @@ const InvoiceDetailsActionBar: FC<IInvoiceDetailsActionBarProps> = ({
 }) => {
   const queryClient = useQueryClient();
   const { openContentDrawer } = useContentDrawerContext();
+  const { openModal } = useModalContext();
 
   const updateInvoiceMutation = useMutation(
     (payload: Partial<Invoice.IFormData>) => axios.put(`/api/invoices/${invoiceId}`, payload),
@@ -37,14 +40,6 @@ const InvoiceDetailsActionBar: FC<IInvoiceDetailsActionBarProps> = ({
   );
 
   const markInvoiceAsPaid = () => updateInvoiceMutation.mutate({ status: EInvoiceStatus.Paid });
-
-  const editInvoice = () => {
-    openContentDrawer();
-  };
-
-  const deleteInvoice = () => {
-    console.log('Should probably open confirm delete modal...');
-  };
 
   // Link content needs to be wrapped in a span wrapper
   // due to Link component only supporting one child
@@ -64,10 +59,10 @@ const InvoiceDetailsActionBar: FC<IInvoiceDetailsActionBarProps> = ({
           {invoiceStatus && <Status status={invoiceStatus} />}
         </S.StatusContainer>
         <S.ActionsContainer>
-          <Button $theme={EButtonTheme.Tertiary} onClick={editInvoice}>
+          <Button $theme={EButtonTheme.Tertiary} onClick={openContentDrawer}>
             Edit
           </Button>
-          <Button $theme={EButtonTheme.Danger} onClick={deleteInvoice}>
+          <Button $theme={EButtonTheme.Danger} onClick={openModal}>
             Delete
           </Button>
           {invoiceStatus !== EInvoiceStatus.Paid && (

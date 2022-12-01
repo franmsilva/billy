@@ -7,6 +7,7 @@ import Typography from '@components/atoms/Typography';
 import Drawer from '@components/molecules/Drawer';
 import InvoiceDetails from '@components/molecules/InvoiceDetails';
 import InvoiceDetailsActionBar from '@components/molecules/InvoiceDetailsActionBar/InvoiceDetailsActionBar';
+import ConfirmDeleteModal from '@components/molecules/Modal/ConfirmDeleteModal';
 import EditInvoiceForm from '@components/organisms/EditInvoiceForm';
 import { ETypographyVariant } from '@enums/typography';
 import CoreLayout from '@src/layouts/core';
@@ -33,6 +34,7 @@ const InvoicesPage: FC = () => {
           <Drawer>
             <EditInvoiceForm invoice={data} />
           </Drawer>
+          <ConfirmDeleteModal invoiceId={invoiceId} invoiceCode={data.code} />
         </>
       )}
     </CoreLayout>

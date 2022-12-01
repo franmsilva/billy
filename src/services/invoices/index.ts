@@ -21,7 +21,7 @@ const getInvoiceItemsTotal = (items: Invoice.IItem[]) =>
   items.reduce((total, item) => total + item.price * item.quantity, 0);
 
 const create = async (payload: Invoice.IFormData) => {
-  const id = uuidv4();
+  const id = uuidv4() as string;
   const { status, client, terms, invoiceItems } = payload;
 
   return new InvoiceModel({
@@ -32,7 +32,7 @@ const create = async (payload: Invoice.IFormData) => {
     ...terms,
     // Temporary solution while we look for a performant way
     // to track the number of items in the table and increment it
-    code: id.slice(0, 6),
+    code: id.slice(0, 6).toUpperCase(),
     total: getInvoiceItemsTotal(invoiceItems),
   }).save();
 };

@@ -14,6 +14,8 @@ const Modal: FC<IModalProps> = ({ children }) => {
   const { isOpen, closeModal } = useModalContext();
   const ref = useClickOutside(closeModal);
 
+  if (!isOpen) return null;
+
   return (
     <>
       <Overlay $isOpen={isOpen} />

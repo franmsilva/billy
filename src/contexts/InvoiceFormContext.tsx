@@ -102,7 +102,11 @@ export const InvoiceFormProvider: FC<IInvoiceFormProviderProps> = ({
     const { name, value } = e.target;
     const data = [...invoiceItems];
 
-    data[index][name] = value;
+    if (name === 'name') {
+      data[index][name] = value;
+    } else {
+      data[index][name] = Number(value);
+    }
 
     setInvoiceItems(data);
   };
