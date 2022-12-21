@@ -70,6 +70,17 @@ export const Button = styled.button<IButtonProps>`
         background-color: ${({ theme }) => theme.colors.siennaLight};
       }
     `}
+
+    ${$btnTheme === EButtonTheme.Text &&
+    css`
+      flex-direction: row-reverse;
+      ${IconWrapper} {
+        background-color: transparent;
+      }
+
+      color: ${({ theme }) => theme.colors.vulcan};
+      background-color: transparent;
+    `}
   `}
 `;
 

@@ -26,7 +26,7 @@ const InvoiceListActionBar: FC<IInvoiceListActionBarProps> = ({ invoiceCount }) 
         {/* TODO: Turn into dropdown */}
         <Typography displayAs={ETypographyVariant.H4}>Filter by status</Typography>
         <S.Button
-          icon="/icon-plus.svg"
+          icon={{ src: '/icon-plus.svg' }}
           $theme={EButtonTheme.Primary}
           onClick={() => openContentDrawer()}
         >

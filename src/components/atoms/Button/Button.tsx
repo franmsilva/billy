@@ -5,15 +5,22 @@ import { Core } from '@types';
 
 import * as S from './Button.styled';
 
+interface IICon {
+  src: string;
+  height?: number;
+  width?: number;
+}
+
 export enum EButtonTheme {
   Primary = 'Primary',
   Secondary = 'Secondary',
   Tertiary = 'Tertiary',
   Danger = 'Danger',
+  Text = 'Text',
 }
 
 interface ButtonProps extends Core.IStyledComponent {
-  icon?: string;
+  icon?: IICon;
   name?: string;
   // Prefixed to avoid clash with styled-components theme prop
   $theme?: EButtonTheme;
@@ -21,6 +28,8 @@ interface ButtonProps extends Core.IStyledComponent {
   onClick: MouseEventHandler;
   children: ReactNode;
 }
+
+const DEFAULT_ICON_SIZE = 10;
 
 const Button: FC<ButtonProps> = ({
   icon,
@@ -31,20 +40,25 @@ const Button: FC<ButtonProps> = ({
   className,
   children,
 }) => {
-  const shouldRenderIcon = icon && $theme === EButtonTheme.Primary;
+  const hasIcon = !!icon;
 
   return (
     <S.Button
       $btnTheme={$theme}
       $fullWidth={fullWidth}
-      $hasIcon={shouldRenderIcon}
+      $hasIcon={hasIcon}
       name={name}
       className={className}
       onClick={onClick}
     >
-      {shouldRenderIcon && (
+      {hasIcon && (
         <S.IconWrapper>
-          <Image src={icon} alt="" height={10} width={10} />
+          <Image
+            alt=""
+            src={icon.src}
+            height={icon.height || DEFAULT_ICON_SIZE}
+            width={icon.width || DEFAULT_ICON_SIZE}
+          />
         </S.IconWrapper>
       )}
       {children}

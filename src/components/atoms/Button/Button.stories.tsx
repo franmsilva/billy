@@ -31,8 +31,7 @@ export const PrimaryWithIcon = Template.bind({});
 PrimaryWithIcon.args = {
   $theme: EButtonTheme.Primary,
   children: 'Primary With Icon',
-
-  icon: '/icon-plus.svg',
+  icon: { src: '/icon-plus.svg' },
 };
 
 export const Secondary = Template.bind({});
@@ -51,4 +50,15 @@ export const Danger = Template.bind({});
 Danger.args = {
   $theme: EButtonTheme.Danger,
   children: 'Danger',
+};
+
+export const Text = Template.bind({});
+Text.args = {
+  $theme: EButtonTheme.Text,
+  children: 'Text',
+  icon: {
+    src: '/icon-arrow-down.svg',
+    height: 10,
+    width: 12,
+  },
 };
