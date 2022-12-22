@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-import { default as UnstyledButton } from '@src/components/atoms/Button';
 import Typography from '@src/components/atoms/Typography';
 
 export const Header = styled.div`
@@ -22,8 +21,4 @@ export const Subheading = styled(Typography)`
 export const Actions = styled.div`
   display: flex;
   align-items: center;
-`;
-
-export const Button = styled(UnstyledButton)`
-  margin-left: 40px;
 `;

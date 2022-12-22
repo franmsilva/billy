@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { EButtonTheme } from '@components/atoms/Button';
+import Button, { EButtonTheme } from '@components/atoms/Button';
 import Typography from '@components/atoms/Typography';
 import { ETypographyVariant } from '@enums/typography';
 import { useContentDrawerContext } from '@src/contexts/ContentDrawerContext';
@@ -26,13 +26,13 @@ const InvoiceListActionBar: FC<IInvoiceListActionBarProps> = ({ invoiceCount }) 
       </S.Headings>
       <S.Actions>
         <StatusDropdown />
-        <S.Button
+        <Button
           icon={{ src: '/icon-plus.svg' }}
           btnTheme={EButtonTheme.Primary}
           onClick={() => openContentDrawer()}
         >
           New Invoice
-        </S.Button>
+        </Button>
       </S.Actions>
     </S.Header>
   );
