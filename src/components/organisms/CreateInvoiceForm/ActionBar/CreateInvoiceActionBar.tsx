@@ -44,18 +44,18 @@ const CreateInvoiceActionBar: FC = () => {
 
   return (
     <S.Container>
-      <Button $theme={EButtonTheme.Tertiary} onClick={closeContentDrawer}>
+      <Button btnTheme={EButtonTheme.Tertiary} onClick={closeContentDrawer}>
         Discard
       </Button>
       <S.PrimaryActionsGroup>
         <Button
           name={CREATE_DRAFT_BTN_NAME}
-          $theme={EButtonTheme.Secondary}
+          btnTheme={EButtonTheme.Secondary}
           onClick={createInvoice}
         >
           Save as Draft
         </Button>
-        <Button name={CREATE_BTN_NAME} $theme={EButtonTheme.Primary} onClick={createInvoice}>
+        <Button name={CREATE_BTN_NAME} btnTheme={EButtonTheme.Primary} onClick={createInvoice}>
           Save & Send
         </Button>
       </S.PrimaryActionsGroup>

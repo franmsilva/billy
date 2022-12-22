@@ -7,7 +7,7 @@ export default {
   title: 'Atoms/Button',
   component: Button,
   argTypes: {
-    $theme: {
+    btnTheme: {
       control: {
         type: 'select',
         options: EButtonTheme,
@@ -23,38 +23,38 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  $theme: EButtonTheme.Primary,
+  btnTheme: EButtonTheme.Primary,
   children: 'Primary',
 };
 
 export const PrimaryWithIcon = Template.bind({});
 PrimaryWithIcon.args = {
-  $theme: EButtonTheme.Primary,
+  btnTheme: EButtonTheme.Primary,
   children: 'Primary With Icon',
   icon: { src: '/icon-plus.svg' },
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  $theme: EButtonTheme.Secondary,
+  btnTheme: EButtonTheme.Secondary,
   children: 'Secondary',
 };
 
 export const Tertiary = Template.bind({});
 Tertiary.args = {
-  $theme: EButtonTheme.Tertiary,
+  btnTheme: EButtonTheme.Tertiary,
   children: 'Tertiary',
 };
 
 export const Danger = Template.bind({});
 Danger.args = {
-  $theme: EButtonTheme.Danger,
+  btnTheme: EButtonTheme.Danger,
   children: 'Danger',
 };
 
 export const Text = Template.bind({});
 Text.args = {
-  $theme: EButtonTheme.Text,
+  btnTheme: EButtonTheme.Text,
   children: 'Text',
   icon: {
     src: '/icon-arrow-down.svg',

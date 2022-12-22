@@ -41,10 +41,10 @@ const ConfirmDeleteModal: FC<IConfirmDeleteModalProps> = ({ invoiceId, invoiceCo
         Are you sure you want to delete invoice #{invoiceCode}? This action cannot be undone
       </S.Copy>
       <S.ActionsContainer>
-        <Button $theme={EButtonTheme.Tertiary} onClick={closeModal}>
+        <Button btnTheme={EButtonTheme.Tertiary} onClick={closeModal}>
           Cancel
         </Button>
-        <Button $theme={EButtonTheme.Danger} onClick={deleteInvoice}>
+        <Button btnTheme={EButtonTheme.Danger} onClick={deleteInvoice}>
           Delete
         </Button>
       </S.ActionsContainer>

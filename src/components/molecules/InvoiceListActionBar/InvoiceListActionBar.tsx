@@ -27,7 +27,7 @@ const InvoiceListActionBar: FC<IInvoiceListActionBarProps> = ({ invoiceCount }) 
         <Typography displayAs={ETypographyVariant.H4}>Filter by status</Typography>
         <S.Button
           icon={{ src: '/icon-plus.svg' }}
-          $theme={EButtonTheme.Primary}
+          btnTheme={EButtonTheme.Primary}
           onClick={() => openContentDrawer()}
         >
           New Invoice

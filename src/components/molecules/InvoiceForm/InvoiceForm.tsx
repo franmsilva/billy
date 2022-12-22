@@ -99,7 +99,7 @@ const InvoiceForm: FC = () => {
           Item List
         </S.Subheading>
         <InvoiceItemsTable />
-        <Button $theme={EButtonTheme.Tertiary} onClick={handleInvoiceItemAdd} fullWidth>
+        <Button btnTheme={EButtonTheme.Tertiary} onClick={handleInvoiceItemAdd} fullWidth>
           + Add New Item
         </Button>
       </S.FieldSet>

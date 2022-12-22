@@ -39,10 +39,10 @@ const EditInvoiceActionBar: FC = () => {
 
   return (
     <S.Container>
-      <Button $theme={EButtonTheme.Tertiary} onClick={closeContentDrawer}>
+      <Button btnTheme={EButtonTheme.Tertiary} onClick={closeContentDrawer}>
         Cancel
       </Button>
-      <Button $theme={EButtonTheme.Primary} onClick={saveChanges}>
+      <Button btnTheme={EButtonTheme.Primary} onClick={saveChanges}>
         Save Changes
       </Button>
     </S.Container>

@@ -23,7 +23,7 @@ interface ButtonProps extends Core.IStyledComponent {
   icon?: IICon;
   name?: string;
   // Prefixed to avoid clash with styled-components theme prop
-  $theme?: EButtonTheme;
+  btnTheme?: EButtonTheme;
   fullWidth?: boolean;
   onClick: MouseEventHandler;
   children: ReactNode;
@@ -34,7 +34,7 @@ const DEFAULT_ICON_SIZE = 10;
 const Button: FC<ButtonProps> = ({
   icon,
   name,
-  $theme = EButtonTheme.Primary,
+  btnTheme = EButtonTheme.Primary,
   fullWidth,
   onClick,
   className,
@@ -44,7 +44,7 @@ const Button: FC<ButtonProps> = ({
 
   return (
     <S.Button
-      $btnTheme={$theme}
+      $btnTheme={btnTheme}
       $fullWidth={fullWidth}
       $hasIcon={hasIcon}
       name={name}

@@ -59,14 +59,14 @@ const InvoiceDetailsActionBar: FC<IInvoiceDetailsActionBarProps> = ({
           {invoiceStatus && <Status status={invoiceStatus} />}
         </S.StatusContainer>
         <S.ActionsContainer>
-          <Button $theme={EButtonTheme.Tertiary} onClick={openContentDrawer}>
+          <Button btnTheme={EButtonTheme.Tertiary} onClick={openContentDrawer}>
             Edit
           </Button>
-          <Button $theme={EButtonTheme.Danger} onClick={openModal}>
+          <Button btnTheme={EButtonTheme.Danger} onClick={openModal}>
             Delete
           </Button>
           {invoiceStatus !== EInvoiceStatus.Paid && (
-            <Button $theme={EButtonTheme.Primary} onClick={markInvoiceAsPaid}>
+            <Button btnTheme={EButtonTheme.Primary} onClick={markInvoiceAsPaid}>
               Mark as Paid
             </Button>
           )}
