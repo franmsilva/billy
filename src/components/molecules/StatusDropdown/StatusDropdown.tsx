@@ -10,14 +10,26 @@ import * as S from './StatusDropdodwn.styled';
 
 const StatusDropdown: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { checkboxGroup, handleCheckboxClick } = useCheckboxGroup(EInvoiceStatus);
-  const ref = useClickOutside(() => setIsOpen(false));
+  const { checkboxGroup, handleCheckboxClick, updateQueryParams } =
+    useCheckboxGroup(EInvoiceStatus);
+  const ref = useClickOutside(() => {
+    updateQueryParams('/invoices');
+    setIsOpen(false);
+  });
+
+  const handleDropdownButtonClick = () => {
+    // If currently open, update query params before closing
+    if (isOpen) {
+      updateQueryParams('/invoices');
+    }
+    setIsOpen((prevState) => !prevState);
+  };
 
   return (
     <S.Container ref={ref}>
       <S.Button
         icon={{ src: '/icon-arrow-down.svg', height: 10, width: 14 }}
-        onClick={() => setIsOpen((prev) => !prev)}
+        onClick={handleDropdownButtonClick}
         btnTheme={EButtonTheme.Text}
         $isOpen={isOpen}
       >

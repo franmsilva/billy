@@ -1,5 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import { useRouter } from 'next/router';
+import QueryString from 'qs';
 import { FC } from 'react';
 
 import Typography from '@components/atoms/Typography';
@@ -11,9 +13,14 @@ import { ETypographyVariant } from '@enums/typography';
 import CoreLayout from '@src/layouts/core';
 import { Invoice } from '@types';
 
+const DEFAULT_QUERY_KEY = 'All';
+
 const InvoicesPage: FC = () => {
-  const { data, error } = useQuery(['invoices'], () =>
-    axios.get<{ invoices: Invoice.IModel[] }>('/api/invoices').then((data) => data.data)
+  const { query } = useRouter();
+  const { data, error } = useQuery(['invoices', query.status || DEFAULT_QUERY_KEY], () =>
+    axios
+      .get<{ invoices: Invoice.IModel[] }>(`/api/invoices?${QueryString.stringify(query)}`)
+      .then((data) => data.data)
   );
 
   if (error) {

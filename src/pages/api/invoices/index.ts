@@ -13,7 +13,9 @@ const postInvoice = async (req: NextApiRequest, res: NextApiResponse) => {
 
 const getAllInvoices = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    const invoices = await InvoiceService.getAll();
+    const statusFilters = req.query.status;
+    const status = typeof statusFilters === 'string' ? statusFilters.split(',') : [];
+    const invoices = await InvoiceService.getAll(status);
     res.status(200).json({ invoices });
   } catch (err) {
     res.status(500).json(err);

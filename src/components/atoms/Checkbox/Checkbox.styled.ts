@@ -11,7 +11,6 @@ export const Checkbox = styled.input`
 
   ::before {
     content: url('/icon-check.svg');
-    margin-bottom: 2px;
     display: none;
   }
 

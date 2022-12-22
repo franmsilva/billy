@@ -39,7 +39,10 @@ const create = async (payload: Invoice.IFormData) => {
 
 const get = async (id: string) => InvoiceModel.get(id);
 
-const getAll = async () => InvoiceModel.scan().exec();
+const getAll = async (status: string[]) =>
+  status.length
+    ? InvoiceModel.scan().filter('status').in(status).exec()
+    : InvoiceModel.scan().exec();
 
 const update = async (id: string, updateObj: Partial<Invoice.IFormData>) => {
   const { status, client, terms, invoiceItems } = updateObj;

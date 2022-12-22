@@ -5,6 +5,8 @@ import Typography from '@components/atoms/Typography';
 import { ETypographyVariant } from '@enums/typography';
 import { useContentDrawerContext } from '@src/contexts/ContentDrawerContext';
 
+import StatusDropdown from '../StatusDropdown';
+
 import * as S from './InvoiceListActionBar.styled';
 
 interface IInvoiceListActionBarProps {
@@ -23,8 +25,7 @@ const InvoiceListActionBar: FC<IInvoiceListActionBarProps> = ({ invoiceCount }) 
         >{`There are ${invoiceCount} total invoices`}</S.Subheading>
       </S.Headings>
       <S.Actions>
-        {/* TODO: Turn into dropdown */}
-        <Typography displayAs={ETypographyVariant.H4}>Filter by status</Typography>
+        <StatusDropdown />
         <S.Button
           icon={{ src: '/icon-plus.svg' }}
           btnTheme={EButtonTheme.Primary}
