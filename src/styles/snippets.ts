@@ -1,4 +1,8 @@
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
+
+export const StoryMarginWrapper = styled.div`
+  margin: 20px;
+`;
 
 export const flexCenter = css`
   display: flex;

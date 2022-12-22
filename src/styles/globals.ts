@@ -31,7 +31,6 @@ export const GlobalStyles = createGlobalStyle`
   button,
   textarea,
   select {
-    border: 1px solid black;
     outline: none;
     appearance: none;
     font-family: 'League Spartan', sans-serif;

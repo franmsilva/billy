@@ -74,12 +74,16 @@ export const Button = styled.button<IButtonProps>`
     ${$btnTheme === EButtonTheme.Text &&
     css`
       flex-direction: row-reverse;
+      background-color: transparent;
+      color: ${({ theme }) => theme.colors.vulcan};
+      width: 200px;
+      padding: 0;
+      margin: 0 auto;
+
       ${IconWrapper} {
         background-color: transparent;
+        margin: 0;
       }
-
-      color: ${({ theme }) => theme.colors.vulcan};
-      background-color: transparent;
     `}
   `}
 `;
