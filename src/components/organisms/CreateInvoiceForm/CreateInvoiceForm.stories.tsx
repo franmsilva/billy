@@ -1,8 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import React from 'react';
 
-import { InvoiceFormProvider } from '@src/contexts/InvoiceFormContext';
-
 import CreateInvoiceForm from './CreateInvoiceForm';
 
 export default {
@@ -11,9 +9,7 @@ export default {
 } as ComponentMeta<typeof CreateInvoiceForm>;
 
 const Template: ComponentStory<typeof CreateInvoiceForm> = (args) => (
-  <InvoiceFormProvider>
-    <CreateInvoiceForm {...args} />
-  </InvoiceFormProvider>
+  <CreateInvoiceForm {...args} />
 );
 
 export const Default = Template.bind({});

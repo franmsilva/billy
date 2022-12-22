@@ -1,6 +1,7 @@
 import * as NextImage from 'next/image';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import { ContentDrawerProvider } from '../src/contexts/ContentDrawerContext';
 import { ModalProvider } from '../src/contexts/ModalContext';
@@ -63,15 +64,19 @@ export const parameters = {
   },
 };
 
+const queryClient = new QueryClient();
+
 export const decorators = [
   (Story) => (
-    <ThemeProvider theme={Theme}>
-      <GlobalStyles />
-      <ContentDrawerProvider>
-        <ModalProvider>
-          <Story />
-        </ModalProvider>
-      </ContentDrawerProvider>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={Theme}>
+        <GlobalStyles />
+        <ContentDrawerProvider>
+          <ModalProvider>
+            <Story />
+          </ModalProvider>
+        </ContentDrawerProvider>
+      </ThemeProvider>
+    </QueryClientProvider>
   ),
 ];
