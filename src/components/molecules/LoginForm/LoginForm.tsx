@@ -17,11 +17,7 @@ interface LoginProps {
 const LoginForm: FC<LoginProps> = ({ type }) => {
   const { login, signup } = useAuth();
   const router = useRouter();
-  const [loginData, setLoginData] = useState<Auth.ILoginData>({
-    email: '',
-    password: '',
-  });
-  const [signUpData, setSignUpData] = useState<Auth.ISignUpData>({
+  const [data, setData] = useState<Auth.IData>({
     email: '',
     password: '',
     repeatPassword: '',
@@ -30,7 +26,7 @@ const LoginForm: FC<LoginProps> = ({ type }) => {
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      await login(loginData.email, loginData.password);
+      await login(data.email, data.password);
       router.push('/');
     } catch (e) {
       console.log(e);
@@ -40,7 +36,7 @@ const LoginForm: FC<LoginProps> = ({ type }) => {
   const handleSignup = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      await signup(signUpData.email, signUpData.password);
+      await signup(data.email, data.password);
       router.push('/');
     } catch (e) {
       console.log(e);
@@ -59,9 +55,9 @@ const LoginForm: FC<LoginProps> = ({ type }) => {
             type="email"
             id="email"
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setLoginData({ ...loginData, email: e.target.value })
+              setData({ ...data, email: e.target.value })
             }
-            value={loginData.email}
+            value={data.email}
             placeholder="Email address"
           />
           <br />
@@ -70,9 +66,9 @@ const LoginForm: FC<LoginProps> = ({ type }) => {
             type="password"
             id="password"
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setLoginData({ ...loginData, password: e.target.value })
+              setData({ ...data, password: e.target.value })
             }
-            value={loginData.password}
+            value={data.password}
             placeholder="Password"
           />
 
@@ -93,9 +89,9 @@ const LoginForm: FC<LoginProps> = ({ type }) => {
             type="email"
             id="email"
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setSignUpData({ ...signUpData, email: e.target.value })
+              setData({ ...data, email: e.target.value })
             }
-            value={signUpData.email}
+            value={data.email}
             placeholder="Email address"
           />
           <br />
@@ -104,9 +100,9 @@ const LoginForm: FC<LoginProps> = ({ type }) => {
             type="password"
             id="password"
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setSignUpData({ ...signUpData, password: e.target.value })
+              setData({ ...data, password: e.target.value })
             }
-            value={signUpData.password}
+            value={data.password}
             placeholder="Password"
           />
           <br />
@@ -115,9 +111,9 @@ const LoginForm: FC<LoginProps> = ({ type }) => {
             type="password"
             id="repeatpassword"
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setSignUpData({ ...signUpData, repeatPassword: e.target.value })
+              setData({ ...data, repeatPassword: e.target.value })
             }
-            value={signUpData.repeatPassword}
+            value={data.repeatPassword}
             placeholder="Repeat Password"
           />
 

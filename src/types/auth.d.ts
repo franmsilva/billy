@@ -5,12 +5,10 @@ export declare namespace Auth {
     uid: string;
     email: string;
   }
-  export interface ILoginData {
+  export interface IData {
     email: string;
     password: string;
-  }
-  export interface ISignUpData extends ILoginData {
-    repeatPassword: string;
+    repeatPassword?: string;
   }
 
   export interface IAuthContext {
