@@ -25,8 +25,9 @@ interface ButtonProps extends Core.IStyledComponent {
   // Prefixed to avoid clash with styled-components theme prop
   btnTheme?: EButtonTheme;
   fullWidth?: boolean;
-  onClick: MouseEventHandler;
+  onClick?: MouseEventHandler;
   children: ReactNode;
+  type?: 'button' | 'submit' | 'reset' | undefined;
 }
 
 const DEFAULT_ICON_SIZE = 10;
@@ -39,6 +40,7 @@ const Button: FC<ButtonProps> = ({
   onClick,
   className,
   children,
+  type,
 }) => {
   const hasIcon = !!icon;
 
@@ -50,6 +52,7 @@ const Button: FC<ButtonProps> = ({
       name={name}
       className={className}
       onClick={onClick}
+      type={type}
     >
       {hasIcon && (
         <S.IconWrapper>
