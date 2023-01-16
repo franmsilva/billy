@@ -17,7 +17,6 @@ export enum EButtonTheme {
   Tertiary = 'Tertiary',
   Danger = 'Danger',
   Text = 'Text',
-  Auth = 'Auth',
 }
 
 interface ButtonProps extends Core.IStyledComponent {

@@ -85,18 +85,6 @@ export const Button = styled.button<IButtonProps>`
         margin: 0;
       }
     `}
-
-    ${$btnTheme === EButtonTheme.Auth &&
-    css`
-      color: white;
-      background-color: ${({ theme }) => theme.colors.cornflowerBlue};
-
-      :hover {
-        background-color: ${({ theme }) => theme.colors.cornflowerBlueLight};
-      }
-      margin: 2.5rem 0 1.5rem;
-      border-radius: ${({ theme }) => theme.borderRadius[4]};
-    `}
   `}
 `;
 

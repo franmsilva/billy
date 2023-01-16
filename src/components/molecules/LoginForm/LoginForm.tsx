@@ -75,8 +75,9 @@ const LoginForm: FC<LoginProps> = ({ type }) => {
             value={loginData.password}
             placeholder="Password"
           />
-
-          <Button btnTheme={EButtonTheme.Auth} fullWidth onClick={handleLogin}>
+          <br />
+          <br />
+          <Button btnTheme={EButtonTheme.Primary} fullWidth onClick={handleLogin}>
             Login to your account
           </Button>
           <S.Paragraph>
@@ -120,8 +121,9 @@ const LoginForm: FC<LoginProps> = ({ type }) => {
             value={signUpData.repeatPassword}
             placeholder="Repeat Password"
           />
-
-          <Button btnTheme={EButtonTheme.Auth} fullWidth onClick={handleSignup}>
+          <br />
+          <br />
+          <Button btnTheme={EButtonTheme.Primary} fullWidth onClick={handleSignup}>
             Create an account
           </Button>
           <S.Paragraph>
