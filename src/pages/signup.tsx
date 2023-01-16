@@ -9,8 +9,7 @@ const SignUp: FC = () => {
   return (
     <AuthLayout>
       <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Billy.io</title>
+        <title>Billy.io | Sign Up</title>
       </Head>
       <AuthForm type={EAuthType.Signup} />
     </AuthLayout>
