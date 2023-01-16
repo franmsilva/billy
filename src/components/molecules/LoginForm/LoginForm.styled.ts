@@ -24,3 +24,9 @@ export const Link = styled.a`
   cursor: pointer;
   text-transform: capitalize;
 `;
+
+export const ErrorMessage = styled.div`
+  color: ${({ theme }) => theme.colors.sienna};
+  font-weight: ${({ theme }) => theme.fontWeight.bold};
+  margin: 0 0 1rem;
+`;

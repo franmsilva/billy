@@ -22,6 +22,37 @@ const LoginForm: FC<LoginProps> = ({ type }) => {
     password: '',
     repeatPassword: '',
   });
+  const [errors, setErrors] = useState<Auth.IErrors>({
+    emailError: '',
+    passwordError: '',
+    repeatPasswordError: '',
+  });
+
+  const validateEmail = (email: string): boolean => {
+    const regex =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!regex.test(email.toLowerCase())) {
+      setErrors({ ...errors, emailError: 'Invalid email' });
+      return false;
+    }
+    return true;
+  };
+
+  const validatePassword = (password: string): boolean => {
+    if (password.length < 8) {
+      setErrors({ ...errors, passwordError: 'Must be at least 8 characters' });
+      return false;
+    }
+    return true;
+  };
+
+  const validateRepeatPassword = (password: string, repeatPassword: string): boolean => {
+    if (password !== repeatPassword) {
+      setErrors({ ...errors, repeatPasswordError: 'Passwords do not match' });
+      return false;
+    }
+    return true;
+  };
 
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
@@ -35,11 +66,17 @@ const LoginForm: FC<LoginProps> = ({ type }) => {
 
   const handleSignup = async (e: FormEvent) => {
     e.preventDefault();
-    try {
-      await signup(data.email, data.password);
-      router.push('/');
-    } catch (e) {
-      console.log(e);
+    if (
+      validateEmail(data.email) &&
+      validatePassword(data.password) &&
+      validateRepeatPassword(data.password, data.repeatPassword)
+    ) {
+      try {
+        await signup(data.email, data.password);
+        router.push('/');
+      } catch (e) {
+        console.log(e);
+      }
     }
   };
 
@@ -88,34 +125,43 @@ const LoginForm: FC<LoginProps> = ({ type }) => {
             name="email"
             type="email"
             id="email"
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setData({ ...data, email: e.target.value })
-            }
+            onChange={(e: ChangeEvent<HTMLInputElement>) => {
+              setData({ ...data, email: e.target.value });
+              setErrors({ ...errors, emailError: '' });
+            }}
             value={data.email}
             placeholder="Email address"
           />
           <br />
+          {errors.emailError && <S.ErrorMessage>{errors.emailError}</S.ErrorMessage>}
           <Input
             name="password"
             type="password"
             id="password"
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setData({ ...data, password: e.target.value })
-            }
+            onChange={(e: ChangeEvent<HTMLInputElement>) => {
+              setData({ ...data, password: e.target.value });
+              setErrors({ ...errors, passwordError: '' });
+            }}
             value={data.password}
             placeholder="Password"
           />
           <br />
+          {errors.passwordError && <S.ErrorMessage>{errors.passwordError}</S.ErrorMessage>}
           <Input
             name="repeatpassword"
             type="password"
             id="repeatpassword"
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setData({ ...data, repeatPassword: e.target.value })
-            }
+            onChange={(e: ChangeEvent<HTMLInputElement>) => {
+              setData({ ...data, repeatPassword: e.target.value });
+              setErrors({ ...errors, repeatPasswordError: '' });
+            }}
             value={data.repeatPassword}
             placeholder="Repeat Password"
           />
+          <br />
+          {errors.repeatPasswordError && (
+            <S.ErrorMessage>{errors.repeatPasswordError}</S.ErrorMessage>
+          )}
 
           <Button btnTheme={EButtonTheme.Auth} fullWidth type="submit">
             Create an account

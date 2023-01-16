@@ -18,4 +18,10 @@ export declare namespace Auth {
     login: (email: string, password: string) => Promise<UserCredential>;
     logout: () => Promise<void>;
   }
+
+  export interface IErrors {
+    emailError: string;
+    passwordError: string;
+    repeatPasswordError: string;
+  }
 }
