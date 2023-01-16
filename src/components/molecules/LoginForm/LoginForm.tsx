@@ -4,7 +4,6 @@ import { useState, FC, FormEvent, ChangeEvent } from 'react';
 
 import Button, { EButtonTheme } from '@components/atoms/Button';
 import Input from '@components/atoms/Input';
-import { ETypographyVariant } from '@enums/typography';
 import { useAuth } from '@src/contexts/AuthContext';
 import { Auth } from '@types';
 
@@ -49,9 +48,7 @@ const LoginForm: FC<LoginProps> = ({ type }) => {
 
   return (
     <S.FormWrapper>
-      <S.Subheading as="h1" displayAs={ETypographyVariant.H1}>
-        {type === 'login' ? 'login' : 'sign up'}
-      </S.Subheading>
+      <h1>{type === 'login' ? 'Login' : 'Sign Up'}</h1>
       {type === 'login' ? (
         <form onSubmit={handleLogin}>
           <Input
