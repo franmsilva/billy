@@ -1,7 +1,8 @@
 import Head from 'next/head';
 import { FC } from 'react';
 
-import LoginForm from '@components/molecules/LoginForm';
+import AuthForm from '@components/molecules/AuthForm';
+import { EAuthType } from '@components/molecules/AuthForm/AuthForm';
 import AuthLayout from '@src/layouts/auth';
 
 const Login: FC = () => {
@@ -11,7 +12,7 @@ const Login: FC = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Billy.io</title>
       </Head>
-      <LoginForm type="login" />
+      <AuthForm type={EAuthType.Login} />
     </AuthLayout>
   );
 };

@@ -7,13 +7,18 @@ import Input from '@components/atoms/Input';
 import { useAuth } from '@src/contexts/AuthContext';
 import { Auth } from '@types';
 
-import * as S from './LoginForm.styled';
+import * as S from './AuthForm.styled';
 
-interface LoginProps {
-  type: string;
+export enum EAuthType {
+  Login = 'LOGIN',
+  Signup = 'SIGNUP',
 }
 
-const LoginForm: FC<LoginProps> = ({ type }) => {
+interface AuthProps {
+  type: EAuthType;
+}
+
+const AuthForm: FC<AuthProps> = ({ type }) => {
   const { login, signup } = useAuth();
   const router = useRouter();
   const [loginData, setLoginData] = useState<Auth.ILoginData>({
@@ -48,8 +53,8 @@ const LoginForm: FC<LoginProps> = ({ type }) => {
 
   return (
     <S.FormWrapper>
-      <h1>{type === 'login' ? 'Login' : 'Sign Up'}</h1>
-      {type === 'login' ? (
+      <h1>{type === EAuthType.Login ? 'Login' : 'Sign Up'}</h1>
+      {type === EAuthType.Login ? (
         <form onSubmit={handleLogin}>
           <Input
             name="email"
@@ -135,4 +140,4 @@ const LoginForm: FC<LoginProps> = ({ type }) => {
   );
 };
 
-export default LoginForm;
+export default AuthForm;
