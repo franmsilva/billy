@@ -26,6 +26,7 @@ const LoginForm: FC<LoginProps> = ({ type }) => {
     emailError: '',
     passwordError: '',
     repeatPasswordError: '',
+    loginError: '',
   });
 
   const validateEmail = (email: string): boolean => {
@@ -59,7 +60,15 @@ const LoginForm: FC<LoginProps> = ({ type }) => {
     try {
       await login(data.email, data.password);
       router.push('/');
+      setErrors({
+        ...errors,
+        loginError: '',
+      });
     } catch (e) {
+      setErrors({
+        ...errors,
+        loginError: 'Sorry, your password was incorrect. Please double-check your password.',
+      });
       console.log(e);
     }
   };
@@ -108,6 +117,8 @@ const LoginForm: FC<LoginProps> = ({ type }) => {
             value={data.password}
             placeholder="Password"
           />
+          <br />
+          {errors.loginError && <S.ErrorMessage>{errors.loginError}</S.ErrorMessage>}
 
           <Button btnTheme={EButtonTheme.Auth} fullWidth type="submit">
             Login to your account

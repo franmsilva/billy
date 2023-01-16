@@ -23,5 +23,6 @@ export declare namespace Auth {
     emailError: string;
     passwordError: string;
     repeatPasswordError: string;
+    loginError: string;
   }
 }
