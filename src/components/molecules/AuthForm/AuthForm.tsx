@@ -21,11 +21,7 @@ interface AuthProps {
 const AuthForm: FC<AuthProps> = ({ type }) => {
   const { login, signup } = useAuth();
   const router = useRouter();
-  const [loginData, setLoginData] = useState<Auth.ILoginData>({
-    email: '',
-    password: '',
-  });
-  const [signUpData, setSignUpData] = useState<Auth.ISignUpData>({
+  const [data, setData] = useState<Auth.IData>({
     email: '',
     password: '',
     repeatPassword: '',
@@ -34,7 +30,7 @@ const AuthForm: FC<AuthProps> = ({ type }) => {
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      await login(loginData.email, loginData.password);
+      await login(data.email, data.password);
       router.push('/');
     } catch (e) {
       console.log(e);
@@ -44,11 +40,15 @@ const AuthForm: FC<AuthProps> = ({ type }) => {
   const handleSignup = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      await signup(signUpData.email, signUpData.password);
+      await signup(data.email, data.password);
       router.push('/');
     } catch (e) {
       console.log(e);
     }
+  };
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setData({ ...data, [e.target.name]: e.target.value });
   };
 
   return (
@@ -60,10 +60,8 @@ const AuthForm: FC<AuthProps> = ({ type }) => {
             name="email"
             type="email"
             id="email"
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setLoginData({ ...loginData, email: e.target.value })
-            }
-            value={loginData.email}
+            onChange={handleInputChange}
+            value={data.email}
             placeholder="Email address"
           />
           <br />
@@ -71,10 +69,8 @@ const AuthForm: FC<AuthProps> = ({ type }) => {
             name="password"
             type="password"
             id="password"
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setLoginData({ ...loginData, password: e.target.value })
-            }
-            value={loginData.password}
+            onChange={handleInputChange}
+            value={data.password}
             placeholder="Password"
           />
           <br />
@@ -95,10 +91,8 @@ const AuthForm: FC<AuthProps> = ({ type }) => {
             name="email"
             type="email"
             id="email"
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setSignUpData({ ...signUpData, email: e.target.value })
-            }
-            value={signUpData.email}
+            onChange={handleInputChange}
+            value={data.email}
             placeholder="Email address"
           />
           <br />
@@ -106,21 +100,17 @@ const AuthForm: FC<AuthProps> = ({ type }) => {
             name="password"
             type="password"
             id="password"
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setSignUpData({ ...signUpData, password: e.target.value })
-            }
-            value={signUpData.password}
+            onChange={handleInputChange}
+            value={data.password}
             placeholder="Password"
           />
           <br />
           <Input
-            name="repeatpassword"
+            name="repeatPassword"
             type="password"
-            id="repeatpassword"
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setSignUpData({ ...signUpData, repeatPassword: e.target.value })
-            }
-            value={signUpData.repeatPassword}
+            id="repeatPassword"
+            onChange={handleInputChange}
+            value={data.repeatPassword}
             placeholder="Repeat Password"
           />
           <br />
