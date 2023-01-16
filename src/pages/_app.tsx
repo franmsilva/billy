@@ -3,7 +3,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { useRouter } from 'next/router';
 import { ThemeProvider } from 'styled-components';
 
-import Protectedroute from '@components/atoms/Protectedroute';
+import ProtectedRoute from '@components/atoms/ProtectedRoute';
 import { GlobalStyles } from '@styles/globals';
 import { Theme } from '@styles/theme';
 
@@ -25,9 +25,9 @@ export default function App({ Component, pageProps }: AppProps) {
           {noAuthRequired.includes(router.pathname) ? (
             <Component {...pageProps} />
           ) : (
-            <Protectedroute>
+            <ProtectedRoute>
               <Component {...pageProps} />
-            </Protectedroute>
+            </ProtectedRoute>
           )}
         </ThemeProvider>
         <ReactQueryDevtools initialIsOpen={false} />
