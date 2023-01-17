@@ -20,13 +20,15 @@ const useAuth = () => useContext(AuthContext);
 
 const AuthContextProvider: React.FC<Props> = ({ children }) => {
   const [user, setUser] = useState<Auth.IUser | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const signup = (email: string, password: string) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const login = (email: string, password: string) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
@@ -46,15 +48,14 @@ const AuthContextProvider: React.FC<Props> = ({ children }) => {
       } else {
         setUser(null);
       }
-      setLoading(false);
     });
 
     return () => unsubscribe();
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, setUser, signup, login, logout }}>
-      {loading ? null : children}
+    <AuthContext.Provider value={{ user, setUser, signup, login, logout, loading, setLoading }}>
+      {children}
     </AuthContext.Provider>
   );
 };

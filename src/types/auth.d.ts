@@ -17,5 +17,7 @@ export declare namespace Auth {
     signup: (email: string, password: string) => Promise<UserCredential>;
     login: (email: string, password: string) => Promise<UserCredential>;
     logout: () => Promise<void>;
+    loading: boolean;
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   }
 }

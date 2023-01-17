@@ -19,7 +19,7 @@ interface AuthProps {
 }
 
 const AuthForm: FC<AuthProps> = ({ type }) => {
-  const { login, signup } = useAuth();
+  const { login, signup, loading, setLoading } = useAuth();
   const router = useRouter();
   const [data, setData] = useState<Auth.IData>({
     email: '',
@@ -35,6 +35,7 @@ const AuthForm: FC<AuthProps> = ({ type }) => {
     } catch (e) {
       console.log(e);
     }
+    setLoading(false);
   };
 
   const handleSignup = async (e: FormEvent) => {
@@ -45,6 +46,7 @@ const AuthForm: FC<AuthProps> = ({ type }) => {
     } catch (e) {
       console.log(e);
     }
+    setLoading(false);
   };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -76,7 +78,7 @@ const AuthForm: FC<AuthProps> = ({ type }) => {
           <br />
           <br />
           <Button btnTheme={EButtonTheme.Primary} fullWidth onClick={handleLogin}>
-            Login to your account
+            {loading ? 'loading...' : 'Login to your account'}
           </Button>
           <S.Paragraph>
             {"Don't have an account? "}
@@ -116,7 +118,7 @@ const AuthForm: FC<AuthProps> = ({ type }) => {
           <br />
           <br />
           <Button btnTheme={EButtonTheme.Primary} fullWidth onClick={handleSignup}>
-            Create an account
+            {loading ? 'loading...' : 'Create an account'}
           </Button>
           <S.Paragraph>
             Already have an account?{' '}
