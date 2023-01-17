@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import Typography from '@components/atoms/Typography';
 import { boxShadow } from '@styles/snippets';
 
 export const FormWrapper = styled.div`
@@ -9,11 +10,11 @@ export const FormWrapper = styled.div`
   ${boxShadow}
 `;
 
-export const Paragraph = styled.p`
+export const Paragraph = styled(Typography)`
   text-align: center;
 `;
 
-export const Link = styled.a`
+export const LinkContent = styled.a`
   color: ${({ theme }) => theme.colors.cornflowerBlue};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   cursor: pointer;

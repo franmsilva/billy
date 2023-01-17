@@ -4,6 +4,7 @@ import { useState, FC, FormEvent, ChangeEvent } from 'react';
 
 import Button, { EButtonTheme } from '@components/atoms/Button';
 import Input from '@components/atoms/Input';
+import { ETypographyVariant } from '@enums/typography';
 import { useAuth } from '@src/contexts/AuthContext';
 import { Auth } from '@types';
 
@@ -80,10 +81,10 @@ const AuthForm: FC<AuthProps> = ({ type }) => {
           <Button btnTheme={EButtonTheme.Primary} fullWidth onClick={handleLogin}>
             {loading ? 'loading...' : 'Login to your account'}
           </Button>
-          <S.Paragraph>
+          <S.Paragraph as="p" displayAs={ETypographyVariant.BodySm}>
             {"Don't have an account? "}
             <Link href="/signup">
-              <S.Link>sign up</S.Link>
+              <S.LinkContent>sign up</S.LinkContent>
             </Link>
           </S.Paragraph>
         </form>
@@ -120,10 +121,10 @@ const AuthForm: FC<AuthProps> = ({ type }) => {
           <Button btnTheme={EButtonTheme.Primary} fullWidth onClick={handleSignup}>
             {loading ? 'loading...' : 'Create an account'}
           </Button>
-          <S.Paragraph>
+          <S.Paragraph as="p" displayAs={ETypographyVariant.BodySm}>
             Already have an account?{' '}
             <Link href="/login">
-              <S.Link>login</S.Link>
+              <S.LinkContent>login</S.LinkContent>
             </Link>
           </S.Paragraph>
         </form>
