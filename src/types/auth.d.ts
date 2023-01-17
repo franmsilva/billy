@@ -5,7 +5,7 @@ export declare namespace Auth {
     uid: string;
     email: string;
   }
-  export interface IData {
+  export interface IFormFields {
     email: string;
     password: string;
     repeatPassword?: string;

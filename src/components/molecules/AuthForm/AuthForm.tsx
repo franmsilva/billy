@@ -2,8 +2,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState, FC, FormEvent, ChangeEvent } from 'react';
 
-import Button, { EButtonTheme } from '@components/atoms/Button';
-import Input from '@components/atoms/Input';
+import { EButtonTheme } from '@components/atoms/Button';
 import { ETypographyVariant } from '@enums/typography';
 import { useAuth } from '@src/contexts/AuthContext';
 import { Auth } from '@types';
@@ -22,7 +21,7 @@ interface AuthProps {
 const AuthForm: FC<AuthProps> = ({ type }) => {
   const { login, signup, loading, setLoading } = useAuth();
   const router = useRouter();
-  const [data, setData] = useState<Auth.IData>({
+  const [formFields, setFormFields] = useState<Auth.IFormFields>({
     email: '',
     password: '',
     repeatPassword: '',
@@ -31,7 +30,7 @@ const AuthForm: FC<AuthProps> = ({ type }) => {
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      await login(data.email, data.password);
+      await login(formFields.email, formFields.password);
       router.push('/');
     } catch (e) {
       console.log(e);
@@ -42,7 +41,7 @@ const AuthForm: FC<AuthProps> = ({ type }) => {
   const handleSignup = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      await signup(data.email, data.password);
+      await signup(formFields.email, formFields.password);
       router.push('/');
     } catch (e) {
       console.log(e);
@@ -51,84 +50,59 @@ const AuthForm: FC<AuthProps> = ({ type }) => {
   };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setData({ ...data, [e.target.name]: e.target.value });
+    setFormFields((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   return (
     <S.FormWrapper>
       <h1>{type === EAuthType.Login ? 'Login' : 'Sign Up'}</h1>
-      {type === EAuthType.Login ? (
-        <form onSubmit={handleLogin}>
-          <Input
-            name="email"
-            type="email"
-            id="email"
-            onChange={handleInputChange}
-            value={data.email}
-            placeholder="Email address"
-          />
-          <br />
-          <Input
-            name="password"
-            type="password"
-            id="password"
-            onChange={handleInputChange}
-            value={data.password}
-            placeholder="Password"
-          />
-          <br />
-          <br />
-          <Button btnTheme={EButtonTheme.Primary} fullWidth onClick={handleLogin}>
-            {loading ? 'loading...' : 'Login to your account'}
-          </Button>
-          <S.Paragraph as="p" displayAs={ETypographyVariant.BodySm}>
-            {"Don't have an account? "}
-            <Link href="/signup">
-              <S.LinkContent>sign up</S.LinkContent>
-            </Link>
-          </S.Paragraph>
-        </form>
-      ) : (
-        <form onSubmit={handleSignup}>
-          <Input
-            name="email"
-            type="email"
-            id="email"
-            onChange={handleInputChange}
-            value={data.email}
-            placeholder="Email address"
-          />
-          <br />
-          <Input
-            name="password"
-            type="password"
-            id="password"
-            onChange={handleInputChange}
-            value={data.password}
-            placeholder="Password"
-          />
-          <br />
-          <Input
+      <form onSubmit={type === EAuthType.Login ? handleLogin : handleSignup}>
+        <S.FormInput
+          name="email"
+          type="email"
+          id="email"
+          onChange={handleInputChange}
+          value={formFields.email}
+          placeholder="Email address"
+        />
+        <S.FormInput
+          name="password"
+          type="password"
+          id="password"
+          onChange={handleInputChange}
+          value={formFields.password}
+          placeholder="Password"
+        />
+        {type === EAuthType.Signup && (
+          <S.FormInput
             name="repeatPassword"
             type="password"
             id="repeatPassword"
             onChange={handleInputChange}
-            value={data.repeatPassword}
+            value={formFields.repeatPassword}
             placeholder="Repeat Password"
           />
-          <br />
-          <br />
-          <Button btnTheme={EButtonTheme.Primary} fullWidth onClick={handleSignup}>
-            {loading ? 'loading...' : 'Create an account'}
-          </Button>
-          <S.Paragraph as="p" displayAs={ETypographyVariant.BodySm}>
-            Already have an account?{' '}
-            <Link href="/login">
-              <S.LinkContent>login</S.LinkContent>
-            </Link>
-          </S.Paragraph>
-        </form>
-      )}
+        )}
+        <S.SubmitButton
+          btnTheme={EButtonTheme.Primary}
+          fullWidth
+          onClick={type === EAuthType.Login ? handleLogin : handleSignup}
+        >
+          {type === EAuthType.Signup
+            ? loading
+              ? 'loading...'
+              : 'Create an account'
+            : loading
+            ? 'loading...'
+            : 'Login to your account'}
+        </S.SubmitButton>
+        <S.Paragraph as="p" displayAs={ETypographyVariant.BodySm}>
+          {type === EAuthType.Signup ? 'Already have an account? ' : "Don't have an account? "}
+          <Link href={type === EAuthType.Signup ? '/login' : '/signup'}>
+            <S.LinkContent>{type === EAuthType.Signup ? 'login' : 'sign up'}</S.LinkContent>
+          </Link>
+        </S.Paragraph>
+      </form>
     </S.FormWrapper>
   );
 };

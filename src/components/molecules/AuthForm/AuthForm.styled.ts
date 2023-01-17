@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import Button from '@components/atoms/Button';
+import Input from '@components/atoms/Input';
 import Typography from '@components/atoms/Typography';
 import { boxShadow } from '@styles/snippets';
 
@@ -19,4 +21,12 @@ export const LinkContent = styled.a`
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   cursor: pointer;
   text-transform: capitalize;
+`;
+
+export const SubmitButton = styled(Button)`
+  margin-top: 1.5rem;
+`;
+
+export const FormInput = styled(Input)`
+  margin-bottom: 1rem;
 `;
