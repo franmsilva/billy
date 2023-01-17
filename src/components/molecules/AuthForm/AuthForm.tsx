@@ -19,7 +19,7 @@ interface AuthProps {
 }
 
 const AuthForm: FC<AuthProps> = ({ type }) => {
-  const { login, signup, loading, setLoading } = useAuth();
+  const { login, signup, loading } = useAuth();
   const router = useRouter();
   const [formFields, setFormFields] = useState<Auth.IFormFields>({
     email: '',
@@ -29,24 +29,14 @@ const AuthForm: FC<AuthProps> = ({ type }) => {
 
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
-    try {
-      await login(formFields.email, formFields.password);
-      router.push('/');
-    } catch (e) {
-      console.log(e);
-    }
-    setLoading(false);
+    await login(formFields.email, formFields.password);
+    router.push('/');
   };
 
   const handleSignup = async (e: FormEvent) => {
     e.preventDefault();
-    try {
-      await signup(formFields.email, formFields.password);
-      router.push('/');
-    } catch (e) {
-      console.log(e);
-    }
-    setLoading(false);
+    await signup(formFields.email, formFields.password);
+    router.push('/');
   };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {

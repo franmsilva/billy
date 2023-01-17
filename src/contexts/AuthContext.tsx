@@ -22,14 +22,30 @@ const AuthContextProvider: React.FC<Props> = ({ children }) => {
   const [user, setUser] = useState<Auth.IUser | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const signup = (email: string, password: string) => {
+  const signup = async (email: string, password: string) => {
     setLoading(true);
-    return createUserWithEmailAndPassword(auth, email, password);
+    try {
+      const signUpResponse = await createUserWithEmailAndPassword(auth, email, password);
+      setLoading(false);
+      return signUpResponse;
+    } catch (e) {
+      setLoading(false);
+      console.log(e);
+    }
   };
 
-  const login = (email: string, password: string) => {
+  const login = async (email: string, password: string) => {
     setLoading(true);
-    return signInWithEmailAndPassword(auth, email, password);
+    try {
+      const loginResponse = await signInWithEmailAndPassword(auth, email, password);
+      setLoading(false);
+      return loginResponse;
+    } catch (e) {
+      setLoading(false);
+      console.log(e);
+      // create state for errors
+    }
+    setLoading(false);
   };
 
   const logout = async () => {
