@@ -3,6 +3,7 @@ import {
   createContext,
   Dispatch,
   FC,
+  MouseEvent,
   MouseEventHandler,
   ReactNode,
   SetStateAction,
@@ -20,7 +21,7 @@ interface IInvoiceFormContext extends Invoice.IFormData {
   handleTermsFieldChange(e: ChangeEvent<HTMLInputElement>): void;
   handleInvoiceItemChange(e: ChangeEvent<HTMLInputElement>, index: number): void;
   handleInvoiceItemAdd: MouseEventHandler;
-  handleInvoiceItemDelete(index: number): void;
+  handleInvoiceItemDelete(e: MouseEvent<HTMLButtonElement>, index: number): void;
 }
 
 const defaultInvoiceFormState: Invoice.IFormData = {
@@ -116,7 +117,8 @@ export const InvoiceFormProvider: FC<IInvoiceFormProviderProps> = ({
     setInvoiceItems([...invoiceItems, { name: 'New Item', quantity: 0, price: 0 }]);
   };
 
-  const handleInvoiceItemDelete = (index) => {
+  const handleInvoiceItemDelete = (e, index) => {
+    e.preventDefault();
     const data = invoiceItems.filter((_item, itemIdx) => itemIdx !== index);
 
     setInvoiceItems(data);

@@ -6,6 +6,7 @@ import { useAuth } from '@src/contexts/AuthContext';
 interface ProtectedRouteProps {
   children: React.ReactNode;
 }
+
 const ProtectedRoute: FC<ProtectedRouteProps> = ({ children }) => {
   const { user } = useAuth();
   const router = useRouter();

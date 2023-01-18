@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { ChangeEvent, FC } from 'react';
+import { ChangeEvent, FC, MouseEvent } from 'react';
 
 import { ETypographyVariant } from '@enums/typography';
 import Input from '@src/components/atoms/Input';
@@ -11,7 +11,7 @@ interface IInvoiceItemsRowProps {
   item: Invoice.IItem;
   index: number;
   handleChange: (e: ChangeEvent, index: number) => void;
-  handleDelete: (index: number) => void;
+  handleDelete: (e: MouseEvent, index: number) => void;
 }
 
 const InvoiceItemsRow: FC<IInvoiceItemsRowProps> = ({
@@ -53,7 +53,7 @@ const InvoiceItemsRow: FC<IInvoiceItemsRowProps> = ({
         </S.Total>
       </S.BodyCell>
       <S.BodyCellCentered>
-        <S.IconButton onClick={() => handleDelete(index)}>
+        <S.IconButton onClick={(e) => handleDelete(e, index)}>
           <Image alt="Delete" src="/icon-delete.svg" height={16} width={12.5} />
         </S.IconButton>
       </S.BodyCellCentered>

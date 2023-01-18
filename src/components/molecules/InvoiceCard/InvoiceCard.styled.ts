@@ -18,6 +18,7 @@ export const InvoiceCard = styled.article`
 
   :hover {
     transform: scale(1.05, 1.05);
+    border: 1px solid ${({ theme }) => theme.colors.cornflowerBlue};
   }
 `;
 

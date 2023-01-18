@@ -5,7 +5,7 @@ export declare namespace Auth {
     uid: string;
     email: string;
   }
-  export interface IData {
+  export interface IFormFields {
     email: string;
     password: string;
     repeatPassword?: string;
@@ -13,16 +13,11 @@ export declare namespace Auth {
 
   export interface IAuthContext {
     user: IUser | null;
-    setUser: React.Dispatch<React.SetStateAction<IUser>>;
     signup: (email: string, password: string) => Promise<UserCredential>;
     login: (email: string, password: string) => Promise<UserCredential>;
     logout: () => Promise<void>;
-  }
-
-  export interface IErrors {
-    emailError: string;
-    passwordError: string;
-    repeatPasswordError: string;
-    loginError: string;
+    loading: boolean;
+    error: string;
+    setError: React.Dispatch<React.SetStateAction<string>>;
   }
 }

@@ -17,7 +17,6 @@ export enum EButtonTheme {
   Tertiary = 'Tertiary',
   Danger = 'Danger',
   Text = 'Text',
-  Auth = 'Auth',
 }
 
 interface ButtonProps extends Core.IStyledComponent {
@@ -28,7 +27,7 @@ interface ButtonProps extends Core.IStyledComponent {
   fullWidth?: boolean;
   onClick?: MouseEventHandler;
   children: ReactNode;
-  type?: 'button' | 'submit' | 'reset' | undefined;
+  type?: 'button' | 'submit' | 'reset';
 }
 
 const DEFAULT_ICON_SIZE = 10;
