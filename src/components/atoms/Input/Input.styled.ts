@@ -14,7 +14,7 @@ export const Input = styled.input`
   padding: 16px 20px;
   background-color: white;
   border: 1px solid ${({ theme }) => theme.colors.selago};
-  border-radius: ${({ theme }) => theme.borderRadius[5]};
+  border-radius: ${({ theme }) => theme.borderRadius[4]};
   ${Heading4}
 `;
 
