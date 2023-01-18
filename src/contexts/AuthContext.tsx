@@ -9,7 +9,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 
 import { Auth } from '@types';
 
-import { auth } from '../../firebase/config'; // refactor
+import { auth } from '../services/firebase/config';
 
 interface Props {
   children: React.ReactNode;
