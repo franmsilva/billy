@@ -23,6 +23,11 @@ export const LinkContent = styled.a`
   text-transform: capitalize;
 `;
 
+export const ErrorMessage = styled.div`
+  color: ${({ theme }) => theme.colors.sienna};
+  font-weight: ${({ theme }) => theme.fontWeight.bold};
+  margin: 0 0 1rem;
+`;
 export const SubmitButton = styled(Button)`
   margin-top: 1.5rem;
 `;

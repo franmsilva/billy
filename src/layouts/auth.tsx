@@ -11,7 +11,7 @@ const AuthLayout: FC<AuthLayoutProps> = ({ children }) => {
   return (
     <S.Wrapper>
       <S.Logo>
-        <Image alt="Logo" src="/logo-login.svg" width={40} height={40} />
+        <Image alt="Logo" src="/logo-dark.svg" width={40} height={40} />
       </S.Logo>
       <S.MainContent>{children}</S.MainContent>
     </S.Wrapper>

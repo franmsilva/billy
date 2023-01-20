@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useState, FC, FormEvent, ChangeEvent } from 'react';
 
 import { EButtonTheme } from '@components/atoms/Button';
+import { MIN_PASSWORD_LENGTH, EMAIL_REGEXP } from '@constants/app';
 import { ETypographyVariant } from '@enums/typography';
 import { useAuth } from '@src/contexts/AuthContext';
 import { Auth } from '@types';
@@ -19,7 +20,7 @@ interface AuthProps {
 }
 
 const AuthForm: FC<AuthProps> = ({ type }) => {
-  const { login, signup, loading } = useAuth();
+  const { login, signup, loading, error: authError, setError } = useAuth();
   const router = useRouter();
   const [formFields, setFormFields] = useState<Auth.IFormFields>({
     email: '',
@@ -27,20 +28,60 @@ const AuthForm: FC<AuthProps> = ({ type }) => {
     repeatPassword: '',
   });
 
+  const [errors, setErrors] = useState<Auth.IFormFields>({
+    email: '',
+    password: '',
+    repeatPassword: '',
+  });
+
+  const validateEmail = (email: string): boolean => {
+    const regex = EMAIL_REGEXP;
+    if (!regex.test(email)) {
+      setErrors({ ...errors, email: 'Invalid email' });
+      return false;
+    }
+    return true;
+  };
+
+  const validatePassword = (password: string): boolean => {
+    if (password.length < MIN_PASSWORD_LENGTH) {
+      setErrors({ ...errors, password: 'Must be at least 8 characters' });
+      return false;
+    }
+    return true;
+  };
+
+  const validateRepeatPassword = (password: string, repeatPassword: string): boolean => {
+    if (password !== repeatPassword) {
+      setErrors({ ...errors, repeatPassword: 'Passwords do not match' });
+      return false;
+    }
+    return true;
+  };
+
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
-    await login(formFields.email, formFields.password);
-    router.push('/');
+    if (validateEmail(formFields.email) && validatePassword(formFields.password)) {
+      await login(formFields.email, formFields.password);
+      router.push('/');
+    }
   };
 
   const handleSignup = async (e: FormEvent) => {
     e.preventDefault();
-    await signup(formFields.email, formFields.password);
-    router.push('/');
+    if (
+      validateEmail(formFields.email) &&
+      validatePassword(formFields.password) &&
+      validateRepeatPassword(formFields.password, formFields.repeatPassword)
+    ) {
+      await signup(formFields.email, formFields.password);
+      router.push('/');
+    }
   };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormFields((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setErrors((prev) => ({ ...prev, [e.target.name]: '' }));
   };
 
   return (
@@ -55,6 +96,7 @@ const AuthForm: FC<AuthProps> = ({ type }) => {
           value={formFields.email}
           placeholder="Email address"
         />
+        <S.ErrorMessage>{errors.email}</S.ErrorMessage>
         <S.FormInput
           name="password"
           type="password"
@@ -63,6 +105,7 @@ const AuthForm: FC<AuthProps> = ({ type }) => {
           value={formFields.password}
           placeholder="Password"
         />
+        <S.ErrorMessage>{errors.password}</S.ErrorMessage>
         {type === EAuthType.Signup && (
           <S.FormInput
             name="repeatPassword"
@@ -73,6 +116,8 @@ const AuthForm: FC<AuthProps> = ({ type }) => {
             placeholder="Repeat Password"
           />
         )}
+        <S.ErrorMessage>{errors.repeatPassword}</S.ErrorMessage>
+        <S.ErrorMessage>{authError}</S.ErrorMessage>
         <S.SubmitButton
           btnTheme={EButtonTheme.Primary}
           fullWidth
@@ -89,7 +134,9 @@ const AuthForm: FC<AuthProps> = ({ type }) => {
         <S.Paragraph as="p" displayAs={ETypographyVariant.BodySm}>
           {type === EAuthType.Signup ? 'Already have an account? ' : "Don't have an account? "}
           <Link href={type === EAuthType.Signup ? '/login' : '/signup'}>
-            <S.LinkContent>{type === EAuthType.Signup ? 'login' : 'sign up'}</S.LinkContent>
+            <S.LinkContent onClick={() => setError('')}>
+              {type === EAuthType.Signup ? 'login' : 'sign up'}
+            </S.LinkContent>
           </Link>
         </S.Paragraph>
       </form>

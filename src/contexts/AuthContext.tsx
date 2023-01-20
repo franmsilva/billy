@@ -1,3 +1,4 @@
+import { FirebaseError } from 'firebase/app';
 import {
   onAuthStateChanged,
   createUserWithEmailAndPassword,
@@ -8,7 +9,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 
 import { Auth } from '@types';
 
-import { auth } from '../../firebase/config'; // refactor
+import { auth } from '../services/firebase/config';
 
 interface Props {
   children: React.ReactNode;
@@ -20,17 +21,19 @@ const useAuth = () => useContext(AuthContext);
 
 const AuthContextProvider: React.FC<Props> = ({ children }) => {
   const [user, setUser] = useState<Auth.IUser | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const signup = async (email: string, password: string) => {
     setLoading(true);
     try {
       const signUpResponse = await createUserWithEmailAndPassword(auth, email, password);
       setLoading(false);
+      setError('');
       return signUpResponse;
-    } catch (e) {
+    } catch (e: unknown) {
       setLoading(false);
-      console.log(e);
+      setError('Failed to sign up. Please try again');
     }
   };
 
@@ -39,11 +42,15 @@ const AuthContextProvider: React.FC<Props> = ({ children }) => {
     try {
       const loginResponse = await signInWithEmailAndPassword(auth, email, password);
       setLoading(false);
+      setError('');
       return loginResponse;
-    } catch (e) {
+    } catch (e: unknown) {
       setLoading(false);
-      console.log(e);
-      // create state for errors
+      if (e instanceof FirebaseError && e.code === 'auth/wrong-password') {
+        setError('Wrong email and/or password');
+      } else {
+        setError('Failed to login. Please try again');
+      }
     }
     setLoading(false);
   };
@@ -70,7 +77,7 @@ const AuthContextProvider: React.FC<Props> = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, setUser, signup, login, logout, loading, setLoading }}>
+    <AuthContext.Provider value={{ user, signup, login, logout, loading, error, setError }}>
       {children}
     </AuthContext.Provider>
   );

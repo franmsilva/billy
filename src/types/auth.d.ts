@@ -13,11 +13,11 @@ export declare namespace Auth {
 
   export interface IAuthContext {
     user: IUser | null;
-    setUser: React.Dispatch<React.SetStateAction<IUser>>;
     signup: (email: string, password: string) => Promise<UserCredential>;
     login: (email: string, password: string) => Promise<UserCredential>;
     logout: () => Promise<void>;
     loading: boolean;
-    setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+    error: string;
+    setError: React.Dispatch<React.SetStateAction<string>>;
   }
 }
