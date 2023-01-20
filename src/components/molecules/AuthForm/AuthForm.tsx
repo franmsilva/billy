@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useState, FC, FormEvent, ChangeEvent } from 'react';
 
 import { EButtonTheme } from '@components/atoms/Button';
+import { MIN_PASSWORD_LENGTH, EMAIL_REGEXP } from '@constants/app';
 import { ETypographyVariant } from '@enums/typography';
 import { useAuth } from '@src/contexts/AuthContext';
 import { Auth } from '@types';
@@ -34,8 +35,7 @@ const AuthForm: FC<AuthProps> = ({ type }) => {
   });
 
   const validateEmail = (email: string): boolean => {
-    const regex =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const regex = EMAIL_REGEXP;
     if (!regex.test(email)) {
       setErrors({ ...errors, email: 'Invalid email' });
       return false;
@@ -44,7 +44,7 @@ const AuthForm: FC<AuthProps> = ({ type }) => {
   };
 
   const validatePassword = (password: string): boolean => {
-    if (password.length < 8) {
+    if (password.length < MIN_PASSWORD_LENGTH) {
       setErrors({ ...errors, password: 'Must be at least 8 characters' });
       return false;
     }
