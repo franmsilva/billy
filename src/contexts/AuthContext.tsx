@@ -21,6 +21,7 @@ const useAuth = () => useContext(AuthContext);
 
 const AuthContextProvider: React.FC<Props> = ({ children }) => {
   const [user, setUser] = useState<Auth.IUser | null>(null);
+  const [isAuthStateLoading, setIsAuthStateLoading] = useState(true);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -71,6 +72,7 @@ const AuthContextProvider: React.FC<Props> = ({ children }) => {
       } else {
         setUser(null);
       }
+      setIsAuthStateLoading(false);
     });
 
     return () => unsubscribe();
@@ -78,7 +80,7 @@ const AuthContextProvider: React.FC<Props> = ({ children }) => {
 
   return (
     <AuthContext.Provider value={{ user, signup, login, logout, loading, error, setError }}>
-      {children}
+      {isAuthStateLoading ? null : children}
     </AuthContext.Provider>
   );
 };
