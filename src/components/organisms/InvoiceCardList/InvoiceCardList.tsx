@@ -1,5 +1,6 @@
 import { FC } from 'react';
 
+import EmptyInvoiceList from '@components/molecules/EmptyInvoiceList';
 import InvoiceCard from '@components/molecules/InvoiceCard';
 import { Invoice } from '@types';
 
@@ -11,9 +12,11 @@ interface IInvoiceCardListProps {
 
 const InvoiceCardList: FC<IInvoiceCardListProps> = ({ invoices }) => (
   <S.List>
-    {invoices.map((invoice) => (
-      <InvoiceCard key={invoice.id} {...invoice} />
-    ))}
+    {invoices.length > 0 ? (
+      invoices.map((invoice) => <InvoiceCard key={invoice.id} {...invoice} />)
+    ) : (
+      <EmptyInvoiceList />
+    )}
   </S.List>
 );
 
