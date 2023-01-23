@@ -13,7 +13,7 @@ const AuthLayout: FC<AuthLayoutProps> = ({ children }) => {
       <S.Logo>
         <Image alt="Logo" src="/logo-dark.svg" width={40} height={40} />
       </S.Logo>
-      <S.MainContent>{children}</S.MainContent>
+      <div>{children}</div>
     </S.Wrapper>
   );
 };

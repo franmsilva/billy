@@ -11,7 +11,3 @@ export const Logo = styled.div`
   position: absolute;
   top: 10rem;
 `;
-export const MainContent = styled.div`
-  width: 400px;
-  height: 375px;
-`;
