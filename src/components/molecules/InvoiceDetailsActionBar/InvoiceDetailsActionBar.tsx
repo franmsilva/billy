@@ -52,7 +52,7 @@ const InvoiceDetailsActionBar: FC<IInvoiceDetailsActionBarProps> = ({
 
   return (
     <>
-      <Link href="/invoices">{renderLinkContent()}</Link>
+      <Link href="/">{renderLinkContent()}</Link>
       <S.MetaBar>
         <S.StatusContainer>
           <S.StatusLabel displayAs={ETypographyVariant.Body}>Status:</S.StatusLabel>

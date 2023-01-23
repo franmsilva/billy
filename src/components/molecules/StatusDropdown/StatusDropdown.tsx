@@ -13,14 +13,16 @@ const StatusDropdown: FC = () => {
   const { checkboxGroup, handleCheckboxClick, updateQueryParams } =
     useCheckboxGroup(EInvoiceStatus);
   const ref = useClickOutside(() => {
-    updateQueryParams('/invoices');
-    setIsOpen(false);
+    if (isOpen) {
+      updateQueryParams('/');
+      setIsOpen(false);
+    }
   });
 
   const handleDropdownButtonClick = () => {
     // If currently open, update query params before closing
     if (isOpen) {
-      updateQueryParams('/invoices');
+      updateQueryParams('/');
     }
     setIsOpen((prevState) => !prevState);
   };

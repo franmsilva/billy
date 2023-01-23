@@ -26,7 +26,7 @@ const ConfirmDeleteModal: FC<IConfirmDeleteModalProps> = ({ invoiceId, invoiceCo
   const deleteInvoiceMutation = useMutation(() => axios.delete(`/api/invoices/${invoiceId}`), {
     onSuccess: () => {
       queryClient.invalidateQueries(['invoices', invoiceId]);
-      router.push('/invoices');
+      router.push('/');
     },
   });
 
