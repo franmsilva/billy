@@ -13,7 +13,7 @@ import { ETypographyVariant } from '@enums/typography';
 import CoreLayout from '@src/layouts/core';
 import { Invoice } from '@types';
 
-const InvoicesPage: FC = () => {
+const InvoiceDetailsPage: FC = () => {
   const { query } = useRouter();
   const invoiceId = query.id as string;
 
@@ -41,4 +41,4 @@ const InvoicesPage: FC = () => {
   );
 };
 
-export default InvoicesPage;
+export default InvoiceDetailsPage;
