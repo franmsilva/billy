@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useState, FC, FormEvent, ChangeEvent } from 'react';
 
 import { EButtonTheme } from '@components/atoms/Button';
+import Spinner from '@components/atoms/Spinner';
 import { MIN_PASSWORD_LENGTH, EMAIL_REGEXP } from '@constants/app';
 import { ETypographyVariant } from '@enums/typography';
 import { useAuth } from '@src/contexts/AuthContext';
@@ -123,13 +124,17 @@ const AuthForm: FC<AuthProps> = ({ type }) => {
           fullWidth
           onClick={type === EAuthType.Login ? handleLogin : handleSignup}
         >
-          {type === EAuthType.Signup
-            ? loading
-              ? 'loading...'
-              : 'Create an account'
-            : loading
-            ? 'loading...'
-            : 'Login to your account'}
+          {type === EAuthType.Signup ? (
+            loading ? (
+              <Spinner size={20} />
+            ) : (
+              'Create an account'
+            )
+          ) : loading ? (
+            <Spinner size={20} />
+          ) : (
+            'Login to your account'
+          )}
         </S.SubmitButton>
         <S.Paragraph as="p" displayAs={ETypographyVariant.BodySm}>
           {type === EAuthType.Signup ? 'Already have an account? ' : "Don't have an account? "}
