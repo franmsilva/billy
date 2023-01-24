@@ -10,10 +10,8 @@ interface AuthLayoutProps {
 const AuthLayout: FC<AuthLayoutProps> = ({ children }) => {
   return (
     <S.Wrapper>
-      <S.Logo>
-        <Image alt="Logo" src="/logo-dark.svg" width={40} height={40} />
-      </S.Logo>
-      <S.MainContent>{children}</S.MainContent>
+      <Image alt="Logo" src="/logo-dark.svg" width={40} height={40} />
+      <div>{children}</div>
     </S.Wrapper>
   );
 };

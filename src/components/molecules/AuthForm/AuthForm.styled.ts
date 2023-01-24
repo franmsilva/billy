@@ -10,6 +10,7 @@ export const FormWrapper = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius[8]};
   padding: 2rem;
   ${boxShadow}
+  width: 400px;
 `;
 
 export const Paragraph = styled(Typography)`

@@ -102,4 +102,33 @@ export const UserContainer = styled.div`
 
 export const ProfileImage = styled(NextImage)`
   border-radius: 50%;
+  cursor: pointer;
+`;
+
+export const PopupMenu = styled.div<{ $isOpen: boolean }>`
+  max-width: 0;
+  background-color: ${({ theme }) => theme.colors.slateGray};
+  color: ${({ theme }) => theme.colors.whisper};
+  position: absolute;
+  bottom: 2rem;
+  left: 6.5rem;
+  z-index: ${({ theme }) => theme.zIndex.modal};
+  border-radius: ${({ theme }) => theme.borderRadius[8]};
+  transition: max-height 200ms ease-in-out, padding 200ms ease-in-out;
+
+  ${({ $isOpen }) =>
+    $isOpen &&
+    css`
+      max-width: 100%;
+      padding: 1rem;
+    `}
+`;
+
+export const LinkContent = styled.a`
+  cursor: pointer;
+  text-transform: capitalize;
+  :hover {
+    color: ${({ theme }) => theme.colors.baliHai};
+    transition: 200ms;
+  }
 `;
