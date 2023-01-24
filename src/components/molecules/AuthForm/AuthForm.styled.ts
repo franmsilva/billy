@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import Button from '@components/atoms/Button';
 import Input from '@components/atoms/Input';
 import Typography from '@components/atoms/Typography';
-import { boxShadow } from '@styles/snippets';
+import { mildBoxShadow } from '@styles/snippets';
 
 export const FormWrapper = styled.div`
   background-color: #ffffff;
   border-radius: ${({ theme }) => theme.borderRadius[8]};
   padding: 2rem;
-  ${boxShadow}
+  ${mildBoxShadow}
   width: 400px;
 `;
 

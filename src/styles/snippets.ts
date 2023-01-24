@@ -10,6 +10,9 @@ export const flexCenter = css`
   justify-content: center;
 `;
 
-export const boxShadow = css`
+export const mildBoxShadow = css`
   box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+`;
+export const boldBoxShadow = css`
+  box-shadow: 0px 10px 20px rgba(72, 84, 159, 0.25);
 `;

@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 import Typography from '@components/atoms/Typography';
-import { boxShadow } from '@styles/snippets';
+import { mildBoxShadow } from '@styles/snippets';
 
 const Container = styled.div`
-  ${boxShadow}
+  ${mildBoxShadow}
   width: 100%;
   background-color: white;
   border-radius: ${({ theme }) => theme.borderRadius[8]};
