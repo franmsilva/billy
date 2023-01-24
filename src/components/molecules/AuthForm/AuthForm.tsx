@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useState, FC, FormEvent, ChangeEvent } from 'react';
 
 import { EButtonTheme } from '@components/atoms/Button';
+import Spinner from '@components/atoms/Spinner';
 import { MIN_PASSWORD_LENGTH, EMAIL_REGEXP } from '@constants/app';
 import { ETypographyVariant } from '@enums/typography';
 import { useAuth } from '@src/contexts/AuthContext';
@@ -84,6 +85,11 @@ const AuthForm: FC<AuthProps> = ({ type }) => {
     setErrors((prev) => ({ ...prev, [e.target.name]: '' }));
   };
 
+  const getSubmitButtonContent = () => {
+    if (loading) return <Spinner size={20} />;
+    return type === EAuthType.Signup ? 'Create an account' : 'Login to your account';
+  };
+
   return (
     <S.FormWrapper>
       <h1>{type === EAuthType.Login ? 'Login' : 'Sign Up'}</h1>
@@ -123,13 +129,7 @@ const AuthForm: FC<AuthProps> = ({ type }) => {
           fullWidth
           onClick={type === EAuthType.Login ? handleLogin : handleSignup}
         >
-          {type === EAuthType.Signup
-            ? loading
-              ? 'loading...'
-              : 'Create an account'
-            : loading
-            ? 'loading...'
-            : 'Login to your account'}
+          {getSubmitButtonContent()}
         </S.SubmitButton>
         <S.Paragraph as="p" displayAs={ETypographyVariant.BodySm}>
           {type === EAuthType.Signup ? 'Already have an account? ' : "Don't have an account? "}

@@ -10,15 +10,13 @@ import InvoiceListActionBar from '@components/molecules/InvoiceListActionBar';
 import CreateInvoiceForm from '@components/organisms/CreateInvoiceForm';
 import InvoiceCardList from '@components/organisms/InvoiceCardList';
 import { ETypographyVariant } from '@enums/typography';
-import { useAuth } from '@src/contexts/AuthContext';
 import CoreLayout from '@src/layouts/core';
 import { Invoice } from '@types';
 
 const DEFAULT_QUERY_KEY = 'All';
 
 const InvoicesPage: FC = () => {
-  const { logout } = useAuth();
-  const { query, push: routerPush } = useRouter();
+  const { query } = useRouter();
   const { data, error } = useQuery(['invoices', query.status || DEFAULT_QUERY_KEY], () =>
     axios
       .get<{ invoices: Invoice.IModel[] }>(`/api/invoices?${QueryString.stringify(query)}`)
@@ -37,14 +35,6 @@ const InvoicesPage: FC = () => {
       ) : (
         <Typography displayAs={ETypographyVariant.H3}>Loading...</Typography>
       )}
-      <button
-        onClick={() => {
-          logout();
-          routerPush('/login');
-        }}
-      >
-        logout
-      </button>
       <Drawer>
         <CreateInvoiceForm />
       </Drawer>
