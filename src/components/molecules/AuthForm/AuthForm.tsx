@@ -85,6 +85,11 @@ const AuthForm: FC<AuthProps> = ({ type }) => {
     setErrors((prev) => ({ ...prev, [e.target.name]: '' }));
   };
 
+  const getSubmitButtonContent = () => {
+    if (loading) return <Spinner size={20} />;
+    return type === EAuthType.Signup ? 'Create an account' : 'Login to your account';
+  };
+
   return (
     <S.FormWrapper>
       <h1>{type === EAuthType.Login ? 'Login' : 'Sign Up'}</h1>
@@ -124,17 +129,7 @@ const AuthForm: FC<AuthProps> = ({ type }) => {
           fullWidth
           onClick={type === EAuthType.Login ? handleLogin : handleSignup}
         >
-          {type === EAuthType.Signup ? (
-            loading ? (
-              <Spinner size={20} />
-            ) : (
-              'Create an account'
-            )
-          ) : loading ? (
-            <Spinner size={20} />
-          ) : (
-            'Login to your account'
-          )}
+          {getSubmitButtonContent()}
         </S.SubmitButton>
         <S.Paragraph as="p" displayAs={ETypographyVariant.BodySm}>
           {type === EAuthType.Signup ? 'Already have an account? ' : "Don't have an account? "}
