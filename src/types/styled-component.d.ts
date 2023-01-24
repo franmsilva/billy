@@ -44,11 +44,5 @@ declare module 'styled-components' {
       bold: 700;
       medium: 500;
     };
-    screens: {
-      sm: '425px';
-      md: '768px';
-      lg: '976px';
-      xl: '1440px';
-    };
   }
 }
