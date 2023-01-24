@@ -21,8 +21,3 @@ export const Paragraph = styled(Typography)`
   text-align: center;
   width: 241px;
 `;
-
-export const Span = styled(Typography)`
-  color: ${({ theme }) => theme.colors.baliHai};
-  font-weight: ${({ theme }) => theme.fontWeight.bold};
-`;
