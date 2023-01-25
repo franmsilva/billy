@@ -3,6 +3,7 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
+import { AuthContextProvider } from '../src/contexts/AuthContext';
 import { ContentDrawerProvider } from '../src/contexts/ContentDrawerContext';
 import { ModalProvider } from '../src/contexts/ModalContext';
 import { GlobalStyles } from '../src/styles/globals';
@@ -65,8 +66,8 @@ export const parameters = {
   },
   viewport: {
     viewports: customViewports,
-    defaultViewport: 'mobileLarge'
-  }
+    defaultViewport: 'mobileLarge',
+  },
 };
 
 const queryClient = new QueryClient();
@@ -76,11 +77,13 @@ export const decorators = [
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={Theme}>
         <GlobalStyles />
-        <ContentDrawerProvider>
-          <ModalProvider>
-            <Story />
-          </ModalProvider>
-        </ContentDrawerProvider>
+        <AuthContextProvider>
+          <ContentDrawerProvider>
+            <ModalProvider>
+              <Story />
+            </ModalProvider>
+          </ContentDrawerProvider>
+        </AuthContextProvider>
       </ThemeProvider>
     </QueryClientProvider>
   ),
