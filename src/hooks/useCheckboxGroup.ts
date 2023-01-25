@@ -23,8 +23,7 @@ const getCheckboxGroupState = (groupNames: string[], query: ParsedUrlQuery) => {
 };
 
 export const useCheckboxGroup = (group: Record<string, string>) => {
-  const router = useRouter();
-  const query = router.query;
+  const { query, push: routerPush } = useRouter();
   const [checkboxGroup, setCheckboxGroup] = useState(() => getInitialState(Object.values(group)));
 
   useEffect(() => {
@@ -48,7 +47,7 @@ export const useCheckboxGroup = (group: Record<string, string>) => {
 
     const query = QueryString.stringify({ status }, { arrayFormat: 'comma', encode: false });
 
-    router.push(
+    routerPush(
       {
         pathname,
         query,

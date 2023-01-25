@@ -24,6 +24,7 @@ declare module 'styled-components' {
       4: '4px';
       6: '6px';
       8: '8px';
+      16: '16px';
       20: '20px';
       24: '24px';
     };
@@ -43,12 +44,6 @@ declare module 'styled-components' {
     fontWeight: {
       bold: 700;
       medium: 500;
-    };
-    screens: {
-      sm: '425px';
-      md: '768px';
-      lg: '976px';
-      xl: '1440px';
     };
   }
 }

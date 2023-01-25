@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { default as UnstyledButton } from '@components/atoms/Button';
+import { boldBoxShadow } from '@styles/snippets';
 
 export const Container = styled.div`
   position: relative;
@@ -31,8 +32,8 @@ export const Popover = styled.div<{ $isOpen: boolean }>`
   background-color: white;
   border-radius: ${({ theme }) => theme.borderRadius[8]};
   transition: max-height 200ms ease-in-out, padding 200ms ease-in-out;
-  box-shadow: 0px 10px 20px rgba(72, 84, 159, 0.25);
   z-index: ${({ theme }) => theme.zIndex.overlay};
+  ${boldBoxShadow}
 
   > label:not(:last-child) {
     margin-bottom: 12px;

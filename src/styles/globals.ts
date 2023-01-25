@@ -16,7 +16,7 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     color: ${({ theme }) => theme.colors.vulcan};
     background-color: ${({ theme }) => theme.colors.whisper};;
-    font-size: ${BASE_FONT_SIZE};
+    font-size: ${BASE_FONT_SIZE}px;
     font-family: 'League Spartan', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -50,6 +50,5 @@ export const GlobalStyles = createGlobalStyle`
 
   a, a:hover, a:focus, a:active  {
     text-decoration: none;
-    color: inherit;
   }
 `;

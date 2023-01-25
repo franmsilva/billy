@@ -25,9 +25,7 @@ interface IContentDrawerProviverProps {
 export const ContentDrawerProvider: FC<IContentDrawerProviverProps> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const closeContentDrawer = (event) => {
-    if (event) event.preventDefault();
-
+  const closeContentDrawer = () => {
     setIsOpen(false);
   };
 

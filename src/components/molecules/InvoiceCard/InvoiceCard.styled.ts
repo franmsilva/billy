@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 import Typography from '@src/components/atoms/Typography';
-import { boxShadow } from '@styles/snippets';
+import { mildBoxShadow } from '@styles/snippets';
 
 export const InvoiceCard = styled.article`
-  ${boxShadow}
+  ${mildBoxShadow}
   height: 72px;
   width: 100%;
   display: grid;

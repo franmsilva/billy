@@ -25,6 +25,7 @@ export const Theme: DefaultTheme = {
     4: '4px',
     6: '6px',
     8: '8px',
+    16: '16px',
     20: '20px',
     24: '24px',
   },
@@ -59,11 +60,5 @@ export const Theme: DefaultTheme = {
   fontWeight: {
     bold: 700,
     medium: 500,
-  },
-  screens: {
-    sm: '425px',
-    md: '768px',
-    lg: '976px',
-    xl: '1440px',
   },
 };

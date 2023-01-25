@@ -5,11 +5,10 @@ export const useClickOutside = (handler: MouseEventHandler) => {
 
   useEffect(() => {
     const listener = (event) => {
-      // Do nothing if clicking ref's element or descendent elements
-      if (!ref.current || ref.current.contains(event.target)) {
-        return;
+      // Only call if clicking ref's element or descendent elements
+      if (!ref.current?.contains(event.target)) {
+        handler(event);
       }
-      handler(event);
     };
 
     document.addEventListener('mousedown', listener);
