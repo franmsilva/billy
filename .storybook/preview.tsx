@@ -1,9 +1,9 @@
-import { RouterContext } from 'next/dist/shared/lib/router-context';
 import * as NextImage from 'next/image';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
+import { AuthContextProvider } from '../src/contexts/AuthContext';
 import { ContentDrawerProvider } from '../src/contexts/ContentDrawerContext';
 import { ModalProvider } from '../src/contexts/ModalContext';
 import { GlobalStyles } from '../src/styles/globals';
@@ -67,9 +67,6 @@ export const parameters = {
   viewport: {
     viewports: customViewports,
     defaultViewport: 'mobileLarge',
-  },
-  nextRouter: {
-    Provider: RouterContext.Provider,
   },
 };
 
