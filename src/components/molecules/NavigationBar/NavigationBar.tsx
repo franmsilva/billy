@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FC, useState } from 'react';
 
+import { useAuth } from '@src/contexts/AuthContext';
 import { useClickOutside } from '@src/hooks/useClickOutside';
 import { useMediaQuery } from '@src/hooks/useMediaQuery';
 import { devices } from '@styles/mediaQueries';
@@ -13,6 +14,7 @@ const TABLET_IMG_SIZE = 32;
 const MOBILE_IMG_SIZE = 28;
 
 const NavigationBar: FC = () => {
+  const { logout } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isTablet = useMediaQuery(devices.tablet);
   const isLaptop = useMediaQuery(devices.laptop);
@@ -52,7 +54,7 @@ const NavigationBar: FC = () => {
         onMouseLeave={() => closeMenuWithDelay(300)}
       >
         <Link href="/login">
-          <S.LinkContent onClick={() => console.log('logout')}>Logout</S.LinkContent>
+          <S.LinkContent onClick={logout}>Logout</S.LinkContent>
         </Link>
       </S.PopupMenu>
     </S.Wrapper>

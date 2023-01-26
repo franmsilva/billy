@@ -77,13 +77,11 @@ export const decorators = [
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={Theme}>
         <GlobalStyles />
-        <AuthContextProvider>
-          <ContentDrawerProvider>
-            <ModalProvider>
-              <Story />
-            </ModalProvider>
-          </ContentDrawerProvider>
-        </AuthContextProvider>
+        <ContentDrawerProvider>
+          <ModalProvider>
+            <Story />
+          </ModalProvider>
+        </ContentDrawerProvider>
       </ThemeProvider>
     </QueryClientProvider>
   ),
