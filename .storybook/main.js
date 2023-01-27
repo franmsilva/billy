@@ -18,7 +18,8 @@ module.exports = {
    * @see https://github.com/storybookjs/storybook/issues/6316#issuecomment-659726964
    */
   webpackFinal: async (config) => {
-    config.resolve.plugins = [new TsconfigPathsPlugin()];
+    config.resolve.plugins = [...(config.resolve.plugins || []), new TsconfigPathsPlugin()];
+
     return config;
   },
 };
