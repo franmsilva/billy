@@ -1,14 +1,10 @@
 import * as NextImage from 'next/image';
 import React from 'react';
-import { ThemeProvider } from 'styled-components';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import { AuthContextProvider } from '../src/contexts/AuthContext';
-import { ContentDrawerProvider } from '../src/contexts/ContentDrawerContext';
-import { ModalProvider } from '../src/contexts/ModalContext';
-import { GlobalStyles } from '../src/styles/globals';
 import { breakpoints } from '../src/styles/mediaQueries';
-import { Theme } from '../src/styles/theme';
+
+import AuthDecorator from './decorators/auth';
+import AppDecorator from './decorators/app';
 
 const OriginalNextImage = NextImage.default;
 
@@ -57,7 +53,6 @@ const customViewports = {
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
-  layout: 'fullscreen',
   controls: {
     matchers: {
       color: /(background|color)$/i,
@@ -66,25 +61,7 @@ export const parameters = {
   },
   viewport: {
     viewports: customViewports,
-    defaultViewport: 'mobileLarge',
   },
 };
 
-const queryClient = new QueryClient();
-
-export const decorators = [
-  (Story) => (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={Theme}>
-        <GlobalStyles />
-        <AuthContextProvider>
-          <ContentDrawerProvider>
-            <ModalProvider>
-              <Story />
-            </ModalProvider>
-          </ContentDrawerProvider>
-        </AuthContextProvider>
-      </ThemeProvider>
-    </QueryClientProvider>
-  ),
-];
+export const decorators = [AppDecorator, AuthDecorator];
