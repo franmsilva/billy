@@ -15,7 +15,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-const AuthContext = createContext({} as Auth.IAuthContext);
+export const AuthContext = createContext({} as Auth.IAuthContext);
 
 const useAuth = () => useContext(AuthContext);
 
