@@ -2,16 +2,16 @@
   "compilerOptions": {
     "target": "ES6",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
-      "@mocks/*": ["./__mocks__/*"],
-      "@components/*": ["./components/*"],
-      "@constants/*": ["./constants/*"],
-      "@enums/*": ["./types/enums/*"],
-      "@services/*": ["./services/*"],
-      "@types": ["./types/index.ts"],
-      "@styles/*": ["./styles/*"],
-      "@src/*": ["./*"]
+      "@mocks/*": ["./src/__mocks__/*"],
+      "@components/*": ["./src/components/*"],
+      "@constants/*": ["./src/constants/*"],
+      "@enums/*": ["./src/types/enums/*"],
+      "@services/*": ["./src/services/*"],
+      "@types": ["./src/types/index.ts"],
+      "@styles/*": ["./src/styles/*"],
+      "@src/*": ["./src/*"]
     },
     "allowJs": true,
     "skipLibCheck": true,

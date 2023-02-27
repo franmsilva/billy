@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { flexCenter } from '@src/styles/snippets';
+import { flexCenter } from '@styles/snippets';
 
 import { Heading4 } from '../Typography';
 
