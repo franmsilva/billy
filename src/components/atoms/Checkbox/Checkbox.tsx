@@ -16,6 +16,7 @@ interface ICheckboxProps {
 const Checkbox: FC<ICheckboxProps> = ({ label, name, isChecked, onClick }) => (
   <S.CheckboxLabel htmlFor={name} onClick={onClick} onChange={onClick}>
     <S.Checkbox
+      id={name}
       type="checkbox"
       name={name}
       checked={isChecked}
