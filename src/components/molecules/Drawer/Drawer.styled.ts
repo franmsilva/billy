@@ -6,15 +6,16 @@ export const Body = styled.div<{ $isOpen: boolean }>`
   position: fixed;
   height: 100vh;
   top: 0;
-  left: -${DIALOG_WIDTH};
+  left: 0;
   width: ${DIALOG_WIDTH};
   background-color: white;
   z-index: ${({ theme }) => theme.zIndex.dialog};
   transition: left 0.2s ease-in-out;
+  display: none;
 
   ${({ $isOpen }) =>
     $isOpen &&
     css`
-      left: 0;
+      display: block;
     `}
 `;
