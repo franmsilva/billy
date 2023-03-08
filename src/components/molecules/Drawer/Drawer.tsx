@@ -16,8 +16,8 @@ const Drawer: FC<IDrawerProps> = ({ children }) => {
 
   return (
     <>
-      <Overlay $isOpen={isOpen} />
-      <S.Body id="drawer" $isOpen={isOpen} ref={ref}>
+      <Overlay $isOpen={isOpen} data-testid="overlay" />
+      <S.Body $isOpen={isOpen} ref={ref}>
         {children}
       </S.Body>
     </>
