@@ -17,22 +17,19 @@ const IntegratedDrawer = () => {
 };
 
 describe('<Drawer/>', () => {
-  it('is closed by default', () => {
+  beforeEach(() => {
     renderWithTheme(
       <ContentDrawerProvider>
         <IntegratedDrawer />
       </ContentDrawerProvider>
     );
+  });
+  it('is closed by default', () => {
     const drawer = screen.getByText(/content/i);
     expect(drawer).not.toBeVisible();
   });
 
   it('is open when new invoices button is clicked and closed when overlay is clicked', () => {
-    renderWithTheme(
-      <ContentDrawerProvider>
-        <IntegratedDrawer />
-      </ContentDrawerProvider>
-    );
     const drawer = screen.getByText(/content/i);
     expect(drawer).not.toBeVisible();
     const button = screen.getByRole('button', { name: /new invoices/i });
